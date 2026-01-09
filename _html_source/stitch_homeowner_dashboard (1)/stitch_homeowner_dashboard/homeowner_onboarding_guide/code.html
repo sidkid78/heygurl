@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Homeowner Onboarding Guide - SafeHome AI</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1c242d", 
+                        "border-dark": "#2c3642"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+<!-- Navbar -->
+<nav class="sticky top-0 z-50 w-full border-b border-solid border-slate-200 dark:border-border-dark bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm">
+<div class="px-4 md:px-10 py-3 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl">shield_person</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">SafeHome AI</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+<div class="flex items-center gap-9">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">My Reports</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Contractors</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 cursor-pointer bg-transparent hover:bg-slate-200 dark:hover:bg-surface-dark py-2 px-3 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-slate-200 dark:border-border-dark" data-alt="User profile picture placeholder, generic avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDs_TNYw4MzaidbTMc748gikyT3OYUxTVyh4qfRknyeldctwa_jfSScUDth-5wA7nPTRWZUa9Lyhg4D59tEL7fiNaV_gadvzVD49zbuvcr1jZAu15jtHVucw0iQSidphQmotGv5F6RSHNMiVdlRrTjWRX7Tk802zpaBZPbfvCZQ7r--SC2jQcIDoxPWQsQzTyYfXVFwFce8ZkVgJAwWHSmZXl7TiuNwQ1IuYy9vdYPo8O9sNCZHp07xjBBIMe3rJURq8GNrNEiVNbc7");'>
+</div>
+</div>
+</div>
+<!-- Mobile Menu Button -->
+<button class="md:hidden text-slate-900 dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 flex justify-center py-8 px-4 md:px-10">
+<div class="flex flex-col max-w-[1024px] w-full gap-8">
+<!-- Page Heading & Intro -->
+<div class="flex flex-col gap-4 animate-fade-in">
+<h1 class="text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">
+                    Welcome, Sarah
+                </h1>
+<p class="text-slate-500 dark:text-slate-400 text-lg md:text-xl font-normal max-w-[720px]">
+                    Let's make your home safer together. We're ready to start your personalized aging-in-place assessment.
+                </p>
+</div>
+<!-- Progress Bar -->
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<p class="text-base font-bold text-primary">Step 2: Home Scan</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">50% Completed</p>
+</div>
+<div class="w-full h-3 bg-slate-200 dark:bg-surface-dark rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 50%;"></div>
+</div>
+<div class="flex justify-between text-xs text-slate-400 dark:text-slate-500 mt-1">
+<span>1. Intro</span>
+<span class="text-white font-medium">2. AR Scan</span>
+<span>3. Analysis</span>
+<span>4. Results</span>
+</div>
+</div>
+<!-- Main Action Area: Desktop-to-Mobile Handoff -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-4">
+<!-- Left: Scan CTA -->
+<div class="lg:col-span-5 flex flex-col justify-between bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-2xl p-6 md:p-8 shadow-sm">
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="text-sm font-bold uppercase tracking-wider">Mobile Required</span>
+</div>
+<div>
+<h3 class="text-2xl font-bold mb-2">Start your AR Scan</h3>
+<p class="text-slate-500 dark:text-slate-400">
+                                Use your phone to create a 3D map of your living space in minutes. Our app detects safety hazards automatically.
+                            </p>
+</div>
+<div class="bg-slate-50 dark:bg-background-dark p-6 rounded-xl flex flex-col items-center gap-4 border border-dashed border-slate-300 dark:border-border-dark">
+<div class="size-40 bg-white p-2 rounded-lg shadow-sm">
+<!-- Abstract QR Code representation using a gradient/pattern if image fails, but using placeholder service for demo -->
+<img alt="QR Code to download mobile app" class="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-M7l8JeEv83iPfoOcYPwDNlRmI2h-svrOXX51Egbt7m8iBzNpMhQbrIX5UQ-hCr6YaEUiCuo-1kcTysUEWju4zuOya0al3qHzuyCC23kAXU90KMKRrMSakq_IbPCukzpXszp1RbMFOtt57-Xf27EUus2QYlSKstY82Q9DtpqqAsxtarqlEcH_gFl97I-1JA8hqVz7YB79MU4qTm0MCJF_IMYuSa5J7A1Cc0gutQHGaFurnx5EXYeTnl1QCBgOIZb17ltaMzaAtKo8"/>
+</div>
+<p class="text-sm font-medium text-center">Scan with your camera to launch</p>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-slate-100 dark:border-border-dark">
+<p class="text-sm font-bold mb-3">Or send a link to your phone</p>
+<div class="flex gap-2">
+<input class="flex-1 bg-slate-50 dark:bg-background-dark border border-slate-300 dark:border-border-dark rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="(555) 000-0000" type="text"/>
+<button class="bg-primary hover:bg-primary/90 text-white font-bold py-2 px-4 rounded-lg text-sm transition-colors">Send</button>
+</div>
+</div>
+</div>
+<!-- Right: Visual Demo / "Why" -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<!-- Hero Image / Video Placeholder -->
+<div class="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 flex flex-col justify-end p-6 md:p-8">
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-red-500 size-2 rounded-full animate-pulse"></span>
+<span class="text-white text-xs font-bold uppercase tracking-wider">Live Demo</span>
+</div>
+<h3 class="text-white text-2xl font-bold">See what the AI sees</h3>
+<p class="text-slate-200 text-sm max-w-md">Our scan highlights tripping hazards, lighting issues, and accessibility barriers in real-time.</p>
+</div>
+<div class="w-full h-full bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700" data-alt="Person holding smartphone scanning a modern living room with augmented reality overlay graphics showing measurements and safety zones" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2PA8chGFr4VFZqGGKPlseXxGlzVTj4pRgl6msAkJpwY5-ZP6tfk2Xh0BQKEJAmFU73tJpCm1jUgbEFFX4xVgPZq84Z3mY6upssJRr5qTMtlcsdxMGXb3FBvij7z0hyT_8Smm6y1Ax9ks-uN_1XezcRmjMgISeOZGJLuIyYaGxP5WeSuokQoTTAl1ubf-_AnLbPNZPVtwYIniAisQLTu1IZbIK8tQ1_PRNrpj7J5LFpoR8V0uY8Y-gy2WPxEsKTGESB85nbfkLUnzX");'>
+</div>
+<!-- Play Button Overlay -->
+<div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+<div class="size-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30">
+<span class="material-symbols-outlined text-white text-3xl">play_arrow</span>
+</div>
+</div>
+</div>
+<!-- Feature Cards (Compact Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 flex-1">
+<!-- Card 1 -->
+<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-xl p-5 flex flex-col gap-3">
+<div class="size-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<div>
+<h4 class="font-bold text-base">AI Analysis</h4>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1 leading-relaxed">Instantly identifies 50+ types of common home safety risks.</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-xl p-5 flex flex-col gap-3">
+<div class="size-10 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<div>
+<h4 class="font-bold text-base">Private &amp; Secure</h4>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1 leading-relaxed">Your home data is encrypted and only shared with contractors you choose.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-xl p-5 flex flex-col gap-3">
+<div class="size-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined">handshake</span>
+</div>
+<div>
+<h4 class="font-bold text-base">Expert Match</h4>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1 leading-relaxed">Connect directly with certified aging-in-place specialists.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Help / Footer Section -->
+<div class="flex flex-col md:flex-row justify-between items-center py-6 border-t border-slate-200 dark:border-border-dark mt-4">
+<button class="flex items-center gap-2 text-slate-500 hover:text-primary transition-colors text-sm font-medium">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+                    Back to Dashboard
+                </button>
+<div class="flex items-center gap-6 mt-4 md:mt-0">
+<div class="flex -space-x-3">
+<div class="size-8 rounded-full border-2 border-background-light dark:border-background-dark bg-cover" data-alt="Support agent avatar 1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAp8z5_gyH6HGo8c0ZrNQmU_qHYfpgqh6oc7VlU_uvjDAYvQaASeIxinHnf8PdmFj9Ejoo6uMz6V4DbDvEQtV7B71RR3J9p1qYHzFBa_jLGdLzAYnVUW74O12JAEt4dAUtJ6xFltbPy7kbhwe9xKj2IjsjguH-9Z5Pcbe78a5VeiBnZjv9lsMBW7ZyVeDvMmzrTrvwt2_jyOTq9CJI3HJtGpDJViHepKziffe8Wu3-eEIvEr7tfPPIq7hBmAd0vnsySRm8urnMZPF66")'></div>
+<div class="size-8 rounded-full border-2 border-background-light dark:border-background-dark bg-cover" data-alt="Support agent avatar 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAi2bsxRH5YEBNT7_T800fNnx3rNmkCcxYOjQJn8_xzTYOzZltGRy5cQ8-j551Fsi8GDjPvLbFBepEk0dz9GxFCCNuQE-8L4An-SC8yL_ZcCLjmQ1Xxy0jiRAQ9nmW1_xf-I2pblq2Q2hyJGuADZe1FX5KmoHYWOm6QEbYED3z57JXF0oEF_5upwlD8MJdTbHYP6tY1zXw8jwZe0YnGv2921R7Sh4gUiM6uOIfPzZDWL85gdYVxuFIZ6JWNNePxGZqtOy-K1SF2sYAN")'></div>
+<div class="size-8 rounded-full border-2 border-background-light dark:border-background-dark bg-slate-200 dark:bg-surface-dark flex items-center justify-center text-[10px] font-bold text-slate-500">+3</div>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-slate-500 dark:text-slate-400">Having trouble?</span>
+<a class="text-sm font-bold text-primary hover:underline" href="#">Chat with an expert</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

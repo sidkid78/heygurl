@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dynamic Scope Builder</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "primary-dark": "#0f65bd",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1b2531",
+                        "surface-lighter": "#283039",
+                        "border-dark": "#2d3748",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Noto Sans", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Custom scrollbar for better aesthetics in dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101922; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3748; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a5568; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display h-screen flex flex-col overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex-none flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-[#283039] px-6 py-3 bg-white dark:bg-[#101922] z-20">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">architecture</span>
+</div>
+<div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">Dynamic Scope Builder</h2>
+<div class="flex items-center gap-2 text-xs text-slate-500 dark:text-[#9dabb9]">
+<span>Pro Mode</span>
+<span class="size-1 rounded-full bg-slate-500"></span>
+<span>v2.4.0</span>
+</div>
+</div>
+</div>
+<!-- Project Status & Actions -->
+<div class="flex items-center gap-3">
+<div class="hidden md:flex items-center gap-2 mr-4 px-3 py-1.5 rounded-full bg-surface-lighter/30 border border-slate-700/50">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+<span class="text-xs font-medium text-emerald-500 uppercase tracking-wider">Auto-Save On</span>
+</div>
+<button class="flex items-center justify-center rounded-lg h-9 px-4 bg-slate-100 dark:bg-[#283039] text-slate-700 dark:text-white text-sm font-bold hover:bg-slate-200 dark:hover:bg-[#323b46] transition-colors gap-2">
+<span class="material-symbols-outlined text-lg">visibility</span>
+<span class="hidden sm:inline">Preview</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary-dark transition-colors gap-2">
+<span class="material-symbols-outlined text-lg">send</span>
+<span>Send Proposal</span>
+</button>
+<div class="h-6 w-px bg-slate-700 mx-1"></div>
+<button class="flex items-center justify-center rounded-lg size-9 bg-slate-100 dark:bg-[#283039] text-slate-700 dark:text-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="flex items-center justify-center rounded-full size-9 bg-purple-600 text-white font-bold text-xs ring-2 ring-[#101922]">
+                JS
+            </button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex flex-1 overflow-hidden relative">
+<!-- LEFT PANEL: AR Context & Source Data -->
+<aside class="w-full lg:w-[400px] xl:w-[450px] flex flex-col border-r border-slate-200 dark:border-[#283039] bg-white dark:bg-[#111418] overflow-y-auto z-10 shadow-xl">
+<!-- Section Header -->
+<div class="p-6 pb-2">
+<div class="flex flex-col gap-1 mb-6">
+<span class="text-xs font-bold text-primary uppercase tracking-wider">Project #4092</span>
+<h1 class="text-2xl font-bold leading-tight">Johnson Residence</h1>
+<p class="text-slate-500 dark:text-[#9dabb9] text-sm">Master Bathroom Retrofit • Aging-in-Place L2</p>
+</div>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-base font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">view_in_ar</span>
+                        AR Assessment Analysis
+                    </h3>
+<span class="text-xs font-medium px-2 py-1 rounded bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">Scan Complete</span>
+</div>
+</div>
+<!-- Image Grid (AR Source) -->
+<div class="px-6 pb-6">
+<div class="flex flex-col gap-3">
+<div class="relative w-full aspect-video bg-slate-800 rounded-xl overflow-hidden group border border-[#283039]">
+<div class="absolute inset-0 bg-cover bg-center opacity-80 group-hover:scale-105 transition-transform duration-500" data-alt="3D LIDAR scan visualization of a bathroom interior with green mesh overlay" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBk5MYzVdV5bspSdEEYjTrKcwZm5OQIBymO-3OOTCXS-xIxEJXMjFIO9giSD3sUiEYGZQDoB-HuAGbSP4OUAK-W93xwiRNGLF0HTh_D83lruFytXIOQiF-IN6Jjb6A_TfuwmyP520B3vZVIl1_Rzk7-1JEzBhn9dnH749AMnbP1oqMmBWI7xBgnS3CeeLkR6iINvA-uGqBsFbPgjzfgRxgwS888B1jAnXQPbyA22298azpQtCbe_0wJMpraJWaBdo3KCOxX1CoNGQ-w");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3 flex justify-between items-end">
+<div>
+<p class="text-white text-sm font-bold">Master Bath Scan</p>
+<p class="text-slate-300 text-xs">Captured 2h ago</p>
+</div>
+<button class="size-8 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/20">
+<span class="material-symbols-outlined text-sm">fullscreen</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="relative aspect-square bg-slate-800 rounded-xl overflow-hidden border border-[#283039]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Close up photo of a bathtub threshold with measurement overlay" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDC3duwRUg-uuI0j1TI9pbFnABrhMek6xg3PVatfr1_A0pZd7e2MFB0oqP_xcp2IRehHC34TrrmD7-cglzk9lrXgPFZp8ptQ_Yrs4_sePHMQ3_sHiT6_8_4cbvBCwhhcV222L3emlEXZxwT8TiUj8-wBqcDmfCe3jCo4R1V8Rx9jBse41QGv1BaTA7vKyRbEeF26tXy7-lsZqQ-5WrtaNu3trPOX2CNWwhl389zpovxKBKxWTB2m-A9CMM-mPDfLOzc5NWFzV_gcE6G");'></div>
+<div class="absolute bottom-0 inset-x-0 p-2 bg-black/60 backdrop-blur-sm">
+<p class="text-white text-xs font-medium truncate">Hazard: High Step</p>
+</div>
+</div>
+<div class="relative aspect-square bg-slate-800 rounded-xl overflow-hidden border border-[#283039]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Photo of a toilet area showing lack of grab bars" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2jEKi4n10IdSRUaprSxOdlB170DaEaasUakTI1SWinLq0Vrrouz6ufHMQYpnXblTe4ZWwwyfFW3nKGIXXS5kSF7sAtvB5s32G8IhKkaIp4wlosv3oXvzBkFJJ0Y14IFDZ4D5fZarJS9J0hSq8Aen1k94QgQjRID-5qlNWQA5Xl9K6iijkdx1aMx7XhoFg5KqeXlY4D5WbCxts5jQIK5Kb797ycmBvDnDexd3t8z1YFuZdYGiYGxzUYgqD5UIwSlveK807SFb_1Qmh");'></div>
+<div class="absolute bottom-0 inset-x-0 p-2 bg-black/60 backdrop-blur-sm">
+<p class="text-white text-xs font-medium truncate">Missing Rails</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Detected Data List -->
+<div class="px-6 pb-8">
+<div class="bg-slate-100 dark:bg-surface-lighter/50 rounded-xl p-4 border border-slate-200 dark:border-[#283039]">
+<div class="flex justify-between items-center py-2 border-b border-slate-200 dark:border-slate-700/50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-lg">square_foot</span>
+<p class="text-slate-500 dark:text-[#9dabb9] text-sm font-medium">Dimensions</p>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold">8' x 10' (80 sq ft)</p>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-slate-200 dark:border-slate-700/50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-lg">height</span>
+<p class="text-slate-500 dark:text-[#9dabb9] text-sm font-medium">Ceiling Height</p>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold">9' 0"</p>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-slate-200 dark:border-slate-700/50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-lg">warning</span>
+<p class="text-slate-500 dark:text-[#9dabb9] text-sm font-medium">Hazards Detected</p>
+</div>
+<p class="text-amber-500 text-sm font-bold">3 Critical</p>
+</div>
+<div class="flex justify-between items-center pt-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-lg">location_on</span>
+<p class="text-slate-500 dark:text-[#9dabb9] text-sm font-medium">Location</p>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold truncate max-w-[150px]">Austin, TX</p>
+</div>
+</div>
+<div class="mt-6">
+<h4 class="text-sm font-bold text-white mb-3">Client Notes</h4>
+<div class="p-3 bg-[#1b2531] border border-[#283039] rounded-lg text-sm text-[#9dabb9]">
+                        "Client has difficulty stepping over the tub edge. Interested in converting to a walk-in shower with a bench."
+                    </div>
+</div>
+</div>
+</aside>
+<!-- RIGHT PANEL: Scope Builder -->
+<section class="flex-1 flex flex-col bg-slate-50 dark:bg-[#0d1218] min-w-0 relative">
+<!-- Toolbar -->
+<div class="flex-none flex flex-wrap items-center justify-between gap-3 p-6 pb-2">
+<div>
+<h2 class="text-xl font-bold text-slate-900 dark:text-white">Proposal Scope</h2>
+<p class="text-sm text-slate-500 dark:text-[#9dabb9]">Review and edit the AI-generated line items.</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center h-9 px-3 rounded-lg border border-slate-200 dark:border-[#283039] text-slate-600 dark:text-[#9dabb9] hover:bg-slate-100 dark:hover:bg-[#283039] text-sm font-medium transition-colors">
+<span class="material-symbols-outlined mr-2 text-lg">filter_list</span>
+                        Filter
+                    </button>
+<button class="flex items-center justify-center h-9 px-3 rounded-lg bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 text-sm font-bold transition-colors">
+<span class="material-symbols-outlined mr-2 text-lg">add</span>
+                        Add Item
+                    </button>
+</div>
+</div>
+<!-- Scope Content (Scrollable) -->
+<div class="flex-1 overflow-y-auto p-6 pt-2 pb-32">
+<!-- Category: Bathroom Modifications -->
+<div class="mb-8">
+<div class="flex items-center justify-between mb-4 px-2">
+<div class="flex items-center gap-2">
+<span class="bg-primary/20 text-primary p-1 rounded">
+<span class="material-symbols-outlined text-lg">bathtub</span>
+</span>
+<h3 class="font-bold text-slate-800 dark:text-white">Bathroom Modifications</h3>
+</div>
+<span class="text-xs font-mono text-slate-500 dark:text-[#9dabb9]">CAT-01</span>
+</div>
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 px-4 py-2 text-xs font-semibold text-slate-500 dark:text-[#9dabb9] uppercase tracking-wider mb-2">
+<div class="col-span-6 md:col-span-5">Description</div>
+<div class="col-span-2 text-center">Qty</div>
+<div class="col-span-2 text-right">Unit Price</div>
+<div class="col-span-2 text-right">Total</div>
+</div>
+<!-- Item Row 1 (High Confidence) -->
+<div class="group bg-white dark:bg-[#1b2531] rounded-xl border border-slate-200 dark:border-[#283039] hover:border-primary/50 dark:hover:border-primary/50 transition-all shadow-sm mb-3">
+<div class="grid grid-cols-12 gap-4 p-4 items-center">
+<div class="col-span-6 md:col-span-5 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-bold text-slate-900 dark:text-white">Convert Tub to Walk-in Shower</span>
+<span class="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20">
+<span class="material-symbols-outlined text-[10px] mr-1">auto_awesome</span> AI Detected
+                                    </span>
+</div>
+<p class="text-xs text-slate-500 dark:text-[#9dabb9] line-clamp-1">Demolition of existing tub, install pan liner, tile surround.</p>
+</div>
+<div class="col-span-2 flex justify-center">
+<input class="w-16 h-8 bg-slate-50 dark:bg-[#101922] border border-slate-200 dark:border-[#283039] rounded text-center text-sm font-bold text-slate-900 dark:text-white focus:ring-1 focus:ring-primary focus:border-primary" type="number" value="1"/>
+</div>
+<div class="col-span-2 text-right">
+<div class="relative">
+<span class="absolute left-0 top-1/2 -translate-y-1/2 text-slate-500 text-xs">$</span>
+<input class="w-full h-8 bg-transparent border-none text-right text-sm font-medium text-slate-900 dark:text-white p-0 focus:ring-0" type="text" value="4,500.00"/>
+</div>
+</div>
+<div class="col-span-2 text-right">
+<span class="font-bold text-slate-900 dark:text-white">$4,500.00</span>
+</div>
+<div class="col-span-12 md:col-span-1 flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-slate-400 hover:text-red-400 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item Row 2 -->
+<div class="group bg-white dark:bg-[#1b2531] rounded-xl border border-slate-200 dark:border-[#283039] hover:border-primary/50 dark:hover:border-primary/50 transition-all shadow-sm mb-3">
+<div class="grid grid-cols-12 gap-4 p-4 items-center">
+<div class="col-span-6 md:col-span-5 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-bold text-slate-900 dark:text-white">Install Grab Bars (24")</span>
+<span class="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20">
+<span class="material-symbols-outlined text-[10px] mr-1">auto_awesome</span> AI Detected
+                                    </span>
+</div>
+<p class="text-xs text-slate-500 dark:text-[#9dabb9]">Stainless steel, knurled finish for grip.</p>
+</div>
+<div class="col-span-2 flex justify-center">
+<input class="w-16 h-8 bg-slate-50 dark:bg-[#101922] border border-slate-200 dark:border-[#283039] rounded text-center text-sm font-bold text-slate-900 dark:text-white focus:ring-1 focus:ring-primary focus:border-primary" type="number" value="3"/>
+</div>
+<div class="col-span-2 text-right">
+<div class="relative">
+<span class="absolute left-0 top-1/2 -translate-y-1/2 text-slate-500 text-xs">$</span>
+<input class="w-full h-8 bg-transparent border-none text-right text-sm font-medium text-slate-900 dark:text-white p-0 focus:ring-0" type="text" value="125.00"/>
+</div>
+</div>
+<div class="col-span-2 text-right">
+<span class="font-bold text-slate-900 dark:text-white">$375.00</span>
+</div>
+<div class="col-span-12 md:col-span-1 flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-slate-400 hover:text-red-400 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Category: Entryway -->
+<div class="mb-8">
+<div class="flex items-center justify-between mb-4 px-2">
+<div class="flex items-center gap-2">
+<span class="bg-primary/20 text-primary p-1 rounded">
+<span class="material-symbols-outlined text-lg">door_front</span>
+</span>
+<h3 class="font-bold text-slate-800 dark:text-white">General &amp; Entryway</h3>
+</div>
+<span class="text-xs font-mono text-slate-500 dark:text-[#9dabb9]">CAT-02</span>
+</div>
+<!-- Item Row 3 (Manual) -->
+<div class="group bg-white dark:bg-[#1b2531] rounded-xl border border-slate-200 dark:border-[#283039] hover:border-primary/50 dark:hover:border-primary/50 transition-all shadow-sm mb-3">
+<div class="grid grid-cols-12 gap-4 p-4 items-center">
+<div class="col-span-6 md:col-span-5 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-bold text-slate-900 dark:text-white">Widening Door Frame</span>
+<span class="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-500/10 text-slate-400 border border-slate-500/20">
+                                        Manual Entry
+                                    </span>
+</div>
+<p class="text-xs text-slate-500 dark:text-[#9dabb9]">Expand master bath entry to 36".</p>
+</div>
+<div class="col-span-2 flex justify-center">
+<input class="w-16 h-8 bg-slate-50 dark:bg-[#101922] border border-slate-200 dark:border-[#283039] rounded text-center text-sm font-bold text-slate-900 dark:text-white focus:ring-1 focus:ring-primary focus:border-primary" type="number" value="1"/>
+</div>
+<div class="col-span-2 text-right">
+<div class="relative">
+<span class="absolute left-0 top-1/2 -translate-y-1/2 text-slate-500 text-xs">$</span>
+<input class="w-full h-8 bg-transparent border-none text-right text-sm font-medium text-slate-900 dark:text-white p-0 focus:ring-0" type="text" value="850.00"/>
+</div>
+</div>
+<div class="col-span-2 text-right">
+<span class="font-bold text-slate-900 dark:text-white">$850.00</span>
+</div>
+<div class="col-span-12 md:col-span-1 flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-slate-400 hover:text-red-400 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Add New Item Ghost Row -->
+<button class="w-full py-4 border-2 border-dashed border-slate-200 dark:border-[#283039] rounded-xl flex items-center justify-center gap-2 text-slate-500 dark:text-[#9dabb9] hover:border-primary/50 hover:text-primary transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-bold text-sm">Add Custom Line Item</span>
+</button>
+</div>
+<!-- Sticky Summary Footer -->
+<div class="absolute bottom-0 left-0 right-0 bg-white dark:bg-[#1b2531] border-t border-slate-200 dark:border-[#283039] p-6 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-20">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex gap-8 w-full md:w-auto">
+<div class="flex flex-col">
+<span class="text-xs text-slate-500 dark:text-[#9dabb9] uppercase font-semibold">Subtotal</span>
+<span class="text-lg font-bold text-slate-900 dark:text-white">$5,725.00</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-slate-500 dark:text-[#9dabb9] uppercase font-semibold">Tax (8%)</span>
+<span class="text-lg font-bold text-slate-900 dark:text-white">$458.00</span>
+</div>
+</div>
+<div class="flex items-center gap-6 w-full md:w-auto justify-between md:justify-end">
+<div class="text-right">
+<span class="text-xs text-slate-500 dark:text-[#9dabb9] uppercase font-bold mr-2">Grand Total</span>
+<div class="text-3xl font-extrabold text-primary">$6,183.00</div>
+</div>
+<button class="md:hidden flex items-center justify-center rounded-lg h-12 px-6 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary-dark transition-colors">
+                            Send
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

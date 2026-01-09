@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contractor Profile View - AgeWell Connect</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#137fec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+              "surface-dark": "#1C252E",
+              "surface-border": "#283039",
+              "text-secondary": "#9dabb9"
+            },
+            fontFamily: {
+              "display": ["Manrope", "Noto Sans", "sans-serif"],
+              "body": ["Manrope", "Noto Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 dark:border-b-[#283039] px-6 lg:px-10 py-3 bg-white dark:bg-background-dark z-20">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 dark:text-white text-slate-900">
+<div class="size-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path></svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">AgeWell Connect</h2>
+</div>
+<div class="hidden lg:flex items-center gap-9">
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Find Pros</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Projects</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Resources</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Community</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-4 lg:gap-8">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-text-secondary flex border-none bg-gray-100 dark:bg-surface-border items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-gray-100 dark:bg-surface-border focus:border-none h-full placeholder:text-text-secondary px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Search" value=""/>
+</div>
+</label>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-600 transition-colors">
+<span class="truncate">Log In</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow w-full px-4 md:px-10 py-6 max-w-[1280px] mx-auto">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 pb-6 text-sm">
+<a class="text-text-secondary hover:text-white transition-colors" href="#">Home</a>
+<span class="text-text-secondary">/</span>
+<a class="text-text-secondary hover:text-white transition-colors" href="#">Contractors</a>
+<span class="text-text-secondary">/</span>
+<span class="text-slate-900 dark:text-white font-medium">SafeStep Renovations</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- LEFT COLUMN: Main Profile Content -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Profile Header -->
+<div class="flex flex-col sm:flex-row gap-6 items-start">
+<div class="bg-center bg-no-repeat bg-cover rounded-xl h-32 w-32 shrink-0 border border-gray-200 dark:border-gray-700 shadow-sm" data-alt="SafeStep Renovations Company Logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCD7ROExjgtUty2Tr2wfqrv0uYmK0uUOz7KpNS6KRYhsmmRmz7a75xUMOFsL0Jc_rFWegHB8eBEpoqnEprmlP_brQiulqAdx_FAIk3r90OFxhmfZUQAX8zK-XHsOylLI6dhbLr_oXaNYqR3SF4zpbG9O7vNjD-jNmzSXBWUw7dPZxNLOIWBOMjojQs-oAafceYmxkOg1VjbAAKaOkH3tXWmAr5Nft8qG9U4TDl97mEhVtpVgOr7n8lD26yWlsslxjyG9igM8T1uB9LO");'></div>
+<div class="flex flex-col gap-1 w-full">
+<div class="flex flex-wrap justify-between items-start gap-4">
+<div>
+<h1 class="text-2xl sm:text-3xl font-bold leading-tight tracking-[-0.015em] text-slate-900 dark:text-white mb-1">SafeStep Renovations</h1>
+<div class="flex items-center gap-2 text-text-secondary text-sm sm:text-base mb-2">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                                    San Diego, CA
+                                    <span class="w-1 h-1 rounded-full bg-gray-500"></span>
+<span>Certified Aging-in-Place Specialist</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="flex text-yellow-500">
+<span class="material-symbols-outlined filled text-[20px]">star</span>
+<span class="material-symbols-outlined filled text-[20px]">star</span>
+<span class="material-symbols-outlined filled text-[20px]">star</span>
+<span class="material-symbols-outlined filled text-[20px]">star</span>
+<span class="material-symbols-outlined filled text-[20px]">star</span>
+</span>
+<span class="font-bold text-slate-900 dark:text-white">4.9</span>
+<span class="text-text-secondary underline decoration-dotted cursor-pointer">(124 Reviews)</span>
+</div>
+</div>
+<!-- Verification Badge for Mobile/Desktop layout flow -->
+<div class="bg-primary/10 border border-primary/20 rounded-full px-3 py-1 flex items-center gap-1.5 text-primary text-xs font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined filled text-[16px]">verified</span>
+                                Verified Pro
+                            </div>
+</div>
+</div>
+</div>
+<!-- AI Insight Card -->
+<div class="rounded-xl overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-slate-900/90 z-10"></div>
+<div class="bg-cover bg-center absolute inset-0 opacity-40 mix-blend-overlay" data-alt="Abstract blueprint background pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC_6_Xr9DMxkjCStMjiBwYoLnzO6ndfXxZ3T-V3Ng4TGKgRU0rS7qk-88U5dcde3d9T8VXBcMh0dj-388YpZP8WVwuHclc2RWWU4KYOV5_8T08jyDAEGso3Cuqm-THsCiIGG5OBMCdlZrfndo6JcSakKvJs67_ug1Sg-8HJN5yYWTb5yIgzYNu9y9IKxaWVeAiPSVKmi4SZJiW05rIZFI_E2U0ZSQpcUeprl1WoFfx-cflJdPaAIiKuaWuTwd53bU1HzkAvH4sKancM");'></div>
+<div class="relative z-20 p-6 sm:p-8 flex flex-col gap-3">
+<div class="flex items-center gap-2 text-blue-300 mb-1">
+<span class="material-symbols-outlined text-[24px]">auto_awesome</span>
+<span class="text-xs font-bold uppercase tracking-widest">AI Match Analysis</span>
+</div>
+<h3 class="text-white text-xl sm:text-2xl font-bold leading-tight">Why this pro is a match for you</h3>
+<p class="text-gray-100 text-sm sm:text-base leading-relaxed max-w-3xl">
+                            Based on your project needs for a <strong>bathroom safety retrofit</strong>, SafeStep is a strong candidate. They are frequently recommended for high-complexity bathroom remodels in San Diego. Our data shows they have a <strong>100% completion rate</strong> for similar aging-in-place projects and hold the specific CAPS certification you requested.
+                        </p>
+</div>
+</div>
+<!-- About Section -->
+<div class="space-y-4">
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">About the Business</h3>
+<p class="text-slate-600 dark:text-text-secondary leading-relaxed">
+                        Specializing in barrier-free living spaces since 2005, SafeStep Renovations is dedicated to helping seniors live independently in the homes they love. We focus on safety, dignity, and aesthetic design, ensuring that accessibility modifications blend seamlessly with your home's existing style. Our team is fully trained in ADA compliance and aging-in-place best practices.
+                    </p>
+</div>
+<!-- Credentials Grid -->
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Credentials &amp; Trust</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+<!-- Credential 1 -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-lg border border-gray-200 dark:border-surface-border flex items-start gap-3">
+<div class="bg-green-500/10 p-2 rounded-full text-green-500 shrink-0">
+<span class="material-symbols-outlined">shield</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white text-sm">Insured &amp; Bonded</p>
+<p class="text-xs text-text-secondary mt-0.5">Verified Nov 2023</p>
+</div>
+</div>
+<!-- Credential 2 -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-lg border border-gray-200 dark:border-surface-border flex items-start gap-3">
+<div class="bg-primary/10 p-2 rounded-full text-primary shrink-0">
+<span class="material-symbols-outlined">school</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white text-sm">CAPS Certified</p>
+<p class="text-xs text-text-secondary mt-0.5">NAHB Accreditation</p>
+</div>
+</div>
+<!-- Credential 3 -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-lg border border-gray-200 dark:border-surface-border flex items-start gap-3">
+<div class="bg-purple-500/10 p-2 rounded-full text-purple-500 shrink-0">
+<span class="material-symbols-outlined">history</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white text-sm">18 Years in Business</p>
+<p class="text-xs text-text-secondary mt-0.5">Since 2005</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Services Tags -->
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Services Offered</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-full bg-gray-100 dark:bg-surface-dark border border-gray-200 dark:border-surface-border text-sm font-medium text-slate-700 dark:text-gray-300">Bathroom Remodeling</span>
+<span class="px-3 py-1.5 rounded-full bg-gray-100 dark:bg-surface-dark border border-gray-200 dark:border-surface-border text-sm font-medium text-slate-700 dark:text-gray-300">Wheelchair Ramps</span>
+<span class="px-3 py-1.5 rounded-full bg-gray-100 dark:bg-surface-dark border border-gray-200 dark:border-surface-border text-sm font-medium text-slate-700 dark:text-gray-300">Grab Bar Installation</span>
+<span class="px-3 py-1.5 rounded-full bg-gray-100 dark:bg-surface-dark border border-gray-200 dark:border-surface-border text-sm font-medium text-slate-700 dark:text-gray-300">Door Widening</span>
+<span class="px-3 py-1.5 rounded-full bg-gray-100 dark:bg-surface-dark border border-gray-200 dark:border-surface-border text-sm font-medium text-slate-700 dark:text-gray-300">Walk-in Tubs</span>
+<span class="px-3 py-1.5 rounded-full bg-gray-100 dark:bg-surface-dark border border-gray-200 dark:border-surface-border text-sm font-medium text-slate-700 dark:text-gray-300">Stair Lifts</span>
+<span class="px-3 py-1.5 rounded-full bg-gray-100 dark:bg-surface-dark border border-gray-200 dark:border-surface-border text-sm font-medium text-slate-700 dark:text-gray-300">Smart Home Safety</span>
+</div>
+</div>
+<!-- Portfolio Grid -->
+<div>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">Featured Projects</h3>
+<a class="text-primary text-sm font-bold hover:underline" href="#">View All Projects</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Project 1 -->
+<div class="group relative rounded-xl overflow-hidden cursor-pointer">
+<div class="aspect-[4/3] bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Modern accessible bathroom with walk-in shower" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAgh6ml3peEAvFjPOXP7_6xUJG5O_PXS7VWmyTkjLGfjtgbCYLpboNFhGF-eWL7EXw9wWSoykbx2zcUKZVWjIqDDTn-KBTD7eX8ViYrEuY3IqVrjMLjxsjvx9ryJ57k-wLaa_k2zLSJbwDr34H3mnCyLCRwLwlAeGI3L9q1yi47215Lra3aXZcJPKPaoONaO02_q-kHBUiaWZmb9V6A7UjuWgkQpCN4oO4pNQ-kO2jyffDGZdOcBDJ78KGrO5T7tM2yE4hEDclPd5dk");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
+<p class="text-white font-bold text-lg">Smith Residence</p>
+<p class="text-gray-300 text-sm">Full Bathroom Safety Remodel</p>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="group relative rounded-xl overflow-hidden cursor-pointer">
+<div class="aspect-[4/3] bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Wheelchair ramp integrated into front porch design" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDRfm3T35tmXhwlSk6WOZTqi9fmRI5wIuCSM4d5pNoxPondGOGoMbrD-bbRXYZj3W55ejsSv5WvfraxaXhENkG0stXjD9bj3oyJzY-Rfr7W65u0YXXsFgDmRi3ZJBXAEL3JUeZVEub2bvCEb414zX_L3Gj9H_L1gmM4BgJZOyuqWp8yxTFkvrrnLpZ_s3Mh1hOtQ7HNhZR3bskXFSpI8sy7O2T8TDXBCxApfWfVWTgmfE0sFjIoAkMAovyZISuz33OXVY_IkEQ_cdRy");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
+<p class="text-white font-bold text-lg">Johnson Exterior</p>
+<p class="text-gray-300 text-sm">Custom Ramp Integration</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Reviews Module -->
+<div class="pt-4">
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6">What Neighbors Say</h3>
+<div class="space-y-6">
+<!-- Review 1 -->
+<div class="border-b border-gray-200 dark:border-surface-border pb-6">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-surface-dark flex items-center justify-center text-primary font-bold">
+                                        JD
+                                    </div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white text-sm">Jane Doe</p>
+<p class="text-xs text-text-secondary">Bathroom Remodel • 2 months ago</p>
+</div>
+</div>
+<div class="flex text-yellow-500 text-sm">
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+</div>
+</div>
+<p class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed">
+                                "SafeStep did an incredible job converting our tub to a walk-in shower for my mother. The team was respectful, clean, and finished ahead of schedule. Highly recommend!"
+                            </p>
+</div>
+<!-- Review 2 -->
+<div class="border-b border-gray-200 dark:border-surface-border pb-6">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-green-100 dark:bg-surface-dark flex items-center justify-center text-green-600 font-bold">
+                                        MR
+                                    </div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white text-sm">Mark Reynolds</p>
+<p class="text-xs text-text-secondary">Ramp Installation • 5 months ago</p>
+</div>
+</div>
+<div class="flex text-yellow-500 text-sm">
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+</div>
+</div>
+<p class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed">
+                                "Professional from start to finish. They handled all the permitting for the ramp and made sure it matched our house siding perfectly."
+                            </p>
+</div>
+</div>
+<button class="w-full mt-4 py-2 text-primary font-bold text-sm hover:underline">Read All 124 Reviews</button>
+</div>
+</div>
+<!-- RIGHT COLUMN: Sticky Sidebar Actions -->
+<div class="lg:col-span-4 relative">
+<div class="sticky top-6 flex flex-col gap-4">
+<!-- Action Card -->
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-surface-border rounded-xl p-6 shadow-lg">
+<div class="flex justify-between items-center mb-6">
+<span class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-green-500/10 text-green-600 text-xs font-bold uppercase tracking-wide">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                Available Now
+                            </span>
+<span class="text-xs text-text-secondary">Responds in ~1 hr</span>
+</div>
+<div class="space-y-3">
+<button class="w-full bg-primary hover:bg-blue-600 text-white font-bold py-3.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-all shadow-md shadow-blue-500/20">
+<span class="material-symbols-outlined text-[20px]">request_quote</span>
+                                Request Free Quote
+                            </button>
+<button class="w-full bg-transparent border border-gray-300 dark:border-gray-600 hover:border-primary hover:text-primary text-slate-900 dark:text-white font-bold py-3.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+                                Message Pro
+                            </button>
+</div>
+<div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium text-text-secondary">Phone</span>
+<span class="text-sm font-bold text-slate-900 dark:text-white">(619) ••• - •••• <a class="text-primary ml-1 text-xs underline" href="#">Show</a></span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium text-text-secondary">License #</span>
+<span class="text-sm font-bold text-slate-900 dark:text-white">CA-982140</span>
+</div>
+</div>
+</div>
+<!-- Safety Guarantee Teaser -->
+<div class="bg-primary/5 border border-primary/10 rounded-xl p-4 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">gpp_good</span>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">AgeWell Guarantee</p>
+<p class="text-xs text-text-secondary mt-1">This pro is backed by our $10k happiness guarantee for completed projects.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

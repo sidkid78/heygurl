@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ContractorConnect - Matches</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1c2127",
+                        "surface-highlight": "#283039",
+                        "text-secondary": "#9dabb9",
+                        "border-dark": "#283039", // Matches header border
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col text-[#111418] dark:text-white overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-border-dark bg-[#111418] px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">ContractorConnect</h2>
+</div>
+<div class="hidden lg:flex items-center gap-9">
+<a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Find Contractors</a>
+<a class="text-text-secondary text-sm font-medium leading-normal hover:text-white transition-colors" href="#">My Projects</a>
+<a class="text-text-secondary text-sm font-medium leading-normal hover:text-white transition-colors" href="#">Resources</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-text-secondary flex border-none bg-surface-highlight items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-surface-highlight focus:border-none h-full placeholder:text-text-secondary px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search" value=""/>
+</div>
+</label>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-surface-highlight text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#323c47] transition-colors">
+<span class="truncate">Log In</span>
+</button>
+<div class="lg:hidden flex items-center text-white">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</div>
+</header>
+<div class="layout-container flex grow flex-col">
+<div class="flex flex-1 justify-center py-5 px-4 lg:px-8 xl:px-40">
+<div class="layout-content-container flex flex-col md:flex-row max-w-[1200px] flex-1 gap-6">
+<!-- Sidebar Filters -->
+<aside class="hidden md:flex flex-col w-64 shrink-0 gap-6">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="text-white text-lg font-bold">Filters</h3>
+<button class="text-primary text-sm font-medium hover:underline">Reset</button>
+</div>
+<!-- Filter Group 1: Specialization -->
+<div class="flex flex-col gap-3 py-2 border-b border-border-dark pb-4">
+<p class="text-white text-sm font-bold">Specialization</p>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-border-dark bg-surface-highlight text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-text-secondary text-sm group-hover:text-white transition-colors">Ramps &amp; Lifts</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-border-dark bg-surface-highlight text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-text-secondary text-sm group-hover:text-white transition-colors">Bathroom Remodel</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-border-dark bg-surface-highlight text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-text-secondary text-sm group-hover:text-white transition-colors">Widening Doorways</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-border-dark bg-surface-highlight text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-text-secondary text-sm group-hover:text-white transition-colors">Flooring</span>
+</label>
+</div>
+<!-- Filter Group 2: Credentials -->
+<div class="flex flex-col gap-3 py-2 border-b border-border-dark pb-4">
+<p class="text-white text-sm font-bold">Credentials</p>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-border-dark bg-surface-highlight text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-text-secondary text-sm group-hover:text-white transition-colors">Verified License</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-border-dark bg-surface-highlight text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-text-secondary text-sm group-hover:text-white transition-colors">CAPS Certified</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-border-dark bg-surface-highlight text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-text-secondary text-sm group-hover:text-white transition-colors">Background Checked</span>
+</label>
+</div>
+<!-- Filter Group 3: Rating -->
+<div class="flex flex-col gap-3 py-2">
+<p class="text-white text-sm font-bold">Rating</p>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="border-border-dark bg-surface-highlight text-primary focus:ring-primary h-4 w-4" name="rating" type="radio"/>
+<span class="text-text-secondary text-sm group-hover:text-white transition-colors">Any Rating</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="border-border-dark bg-surface-highlight text-primary focus:ring-primary h-4 w-4" name="rating" type="radio"/>
+<span class="text-text-secondary text-sm group-hover:text-white transition-colors">4.5 Stars &amp; Up</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="border-border-dark bg-surface-highlight text-primary focus:ring-primary h-4 w-4" name="rating" type="radio"/>
+<span class="text-text-secondary text-sm group-hover:text-white transition-colors">4.0 Stars &amp; Up</span>
+</label>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex flex-col flex-1 gap-4">
+<!-- Page Heading Section -->
+<div class="flex flex-col gap-3 pb-2">
+<div class="flex flex-wrap justify-between items-end gap-3">
+<div class="flex flex-col gap-2">
+<h1 class="text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em]">Your Top Matches</h1>
+<p class="text-text-secondary text-base font-normal leading-normal">We found 5 contractors specializing in aging-in-place near Chicago, IL.</p>
+</div>
+</div>
+<!-- Meta Text -->
+<div class="flex items-start gap-2 bg-primary/10 border border-primary/20 rounded-lg p-3">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">auto_awesome</span>
+<p class="text-text-secondary text-sm font-normal leading-normal">
+<span class="text-white font-medium">AI Insight:</span> Matched based on your zip code and ramp installation needs.
+                            </p>
+</div>
+</div>
+<!-- Sorting Chips -->
+<div class="flex gap-3 py-2 flex-wrap items-center overflow-x-auto no-scrollbar">
+<span class="text-white text-sm font-medium mr-2">Sort by:</span>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary text-white pl-4 pr-3 transition-colors">
+<p class="text-sm font-medium leading-normal">Relevance</p>
+<span class="material-symbols-outlined text-[20px]">check</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-highlight hover:bg-[#323c47] transition-colors pl-4 pr-3">
+<p class="text-white text-sm font-medium leading-normal">Rating</p>
+<span class="material-symbols-outlined text-white text-[20px]">keyboard_arrow_down</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-highlight hover:bg-[#323c47] transition-colors pl-4 pr-3">
+<p class="text-white text-sm font-medium leading-normal">Distance</p>
+<span class="material-symbols-outlined text-white text-[20px]">keyboard_arrow_down</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-highlight hover:bg-[#323c47] transition-colors pl-4 pr-3">
+<p class="text-white text-sm font-medium leading-normal">Availability</p>
+<span class="material-symbols-outlined text-white text-[20px]">keyboard_arrow_down</span>
+</button>
+</div>
+<!-- Contractor List (Cards Layout) -->
+<div class="flex flex-col gap-4 mt-2">
+<!-- Card 1 -->
+<div class="flex flex-col md:flex-row gap-5 p-5 rounded-xl border border-border-dark bg-surface-dark hover:border-primary/50 transition-colors group">
+<!-- Visual -->
+<div class="w-full md:w-48 h-48 md:h-auto shrink-0 rounded-lg overflow-hidden bg-[#283039] relative">
+<img alt="Contractor working on home renovation details" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Contractor working on home renovation details" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLEE-e0bGAIVyh60eLtw-yEZpkrK8toV9ma0JghT9lhMmEI_F8iDKuL9sVNEbXPy_of1eMR3yGZZargIhUSat7mAku4pL9TBitzN5lVbS8vlh1m9PLrVE7NaEMBgXaQb9nVVgWkZgDTrjQhKc3KKmqjQpvn-5ks0YdG-uCm9iX2VPLTYQYwOkDhKHStbH5tVPDa0qc9mmcObEGiK5DgCiAY0HdU9Nb3LcO_GahWksJn17ZkF0ayRuWS5j7icg7vMGTqkWeYZegag51"/>
+<div class="absolute top-2 left-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-400 text-[14px] fill-1">star</span>
+<span class="text-white text-xs font-bold">4.9</span>
+</div>
+</div>
+<!-- Content -->
+<div class="flex flex-col flex-1 justify-between gap-4">
+<div>
+<div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="text-white text-xl font-bold">SafeStay Home Solutions</h3>
+<span class="material-symbols-outlined text-primary text-[20px]" title="Verified">verified</span>
+</div>
+<p class="text-text-secondary text-sm">Serving Chicago &amp; Suburbs • 15 Years in Business</p>
+</div>
+<div class="flex items-center gap-1 bg-green-500/10 px-2 py-1 rounded text-green-400 text-xs font-bold border border-green-500/20">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+                                            Available Next Week
+                                        </div>
+</div>
+<div class="flex flex-wrap gap-2 mb-3">
+<span class="px-2 py-1 rounded bg-[#283039] text-white text-xs font-medium">CAPS Certified</span>
+<span class="px-2 py-1 rounded bg-[#283039] text-white text-xs font-medium">Wheelchair Ramps</span>
+<span class="px-2 py-1 rounded bg-[#283039] text-white text-xs font-medium">Bathroom Safety</span>
+</div>
+<p class="text-text-secondary text-sm leading-relaxed line-clamp-2">
+                                        Specializing in ADA-compliant bathroom conversions and outdoor accessibility solutions. We handle everything from permits to final inspection with a focus on senior safety.
+                                    </p>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 mt-1">
+<button class="flex-1 flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-blue-600 transition-colors">
+<span class="material-symbols-outlined text-[18px]">call</span>
+                                        Contact Now
+                                    </button>
+<button class="flex-1 flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-[#283039] text-white text-sm font-medium hover:bg-[#323c47] transition-colors border border-[#3b4754]">
+                                        View Profile
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col md:flex-row gap-5 p-5 rounded-xl border border-border-dark bg-surface-dark hover:border-primary/50 transition-colors group">
+<!-- Visual -->
+<div class="w-full md:w-48 h-48 md:h-auto shrink-0 rounded-lg overflow-hidden bg-[#283039] relative">
+<img alt="Modern accessible home interior design" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern accessible home interior design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt3tJ_uwdodzNUf0X4y0j_ZeC_EHj4sGmO-dDJAUUW2T17ZYFGMOskgoxeRO9whxBf_RqemcCStbKhG-6fqe1QnrKnOyt6Q4A7TkOWbgLSmnxqhOqae2-qfgkOYVk1vJE-ptzxs82xV0OlBmC8Sgnf6asdvAmzvrsqz9_9u2lUlIqpnUR6yu1-zRWlRhfwkI21zMbYsMgFqbPkJHWiYuQE9q4JTCHp20sI2hxDqOCh3s85ZDdIyMFXJkThVF8Wo9Io3KOQ3kydA_f-"/>
+<div class="absolute top-2 left-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-400 text-[14px] fill-1">star</span>
+<span class="text-white text-xs font-bold">4.7</span>
+</div>
+</div>
+<!-- Content -->
+<div class="flex flex-col flex-1 justify-between gap-4">
+<div>
+<div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="text-white text-xl font-bold">Access Living Remodels</h3>
+<span class="material-symbols-outlined text-text-secondary text-[20px]" title="Background Checked">shield</span>
+</div>
+<p class="text-text-secondary text-sm">North Chicago • 8 Years in Business</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-3">
+<span class="px-2 py-1 rounded bg-[#283039] text-white text-xs font-medium">Door Widening</span>
+<span class="px-2 py-1 rounded bg-[#283039] text-white text-xs font-medium">Stair Lifts</span>
+<span class="px-2 py-1 rounded bg-[#283039] text-white text-xs font-medium">Flooring</span>
+</div>
+<p class="text-text-secondary text-sm leading-relaxed line-clamp-2">
+                                        Expert team dedicated to creating barrier-free living spaces. We offer free in-home consultations to assess your specific mobility needs.
+                                    </p>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 mt-1">
+<button class="flex-1 flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-blue-600 transition-colors">
+<span class="material-symbols-outlined text-[18px]">call</span>
+                                        Contact Now
+                                    </button>
+<button class="flex-1 flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-[#283039] text-white text-sm font-medium hover:bg-[#323c47] transition-colors border border-[#3b4754]">
+                                        View Profile
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col md:flex-row gap-5 p-5 rounded-xl border border-border-dark bg-surface-dark hover:border-primary/50 transition-colors group">
+<!-- Visual -->
+<div class="w-full md:w-48 h-48 md:h-auto shrink-0 rounded-lg overflow-hidden bg-[#283039] relative">
+<img alt="Close up of construction tools and blueprints" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close up of construction tools and blueprints" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMfFQhP88iC-E9gOZe56hdGb7CVnx0q5ajfay1gSFj9fiv8EIgNbrnumvCpSmpXyOzdvfF-58osgODPCoCvZO2aoJdzDvqg08zaHtj9bYI1deWVulCda0I3e16T_cW4B6FHXriAZKftOFfR6uJEQzyrqELd2FeFDTpIoAkUVl4wlG2-ToI6um43Skeas5cQoWmWrN3zj55shcn7fWhGao-uziWdu0dimeuc5NlsBk5hdGL0x2wusV2KzozFWM6wGT8Uz8sZqJO5trC"/>
+<div class="absolute top-2 left-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-400 text-[14px] fill-1">star</span>
+<span class="text-white text-xs font-bold">4.8</span>
+</div>
+</div>
+<!-- Content -->
+<div class="flex flex-col flex-1 justify-between gap-4">
+<div>
+<div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="text-white text-xl font-bold">Senior Safe Homes</h3>
+<span class="material-symbols-outlined text-primary text-[20px]" title="Verified">verified</span>
+</div>
+<p class="text-text-secondary text-sm">Greater Chicago Area • 20+ Years in Business</p>
+</div>
+<div class="flex items-center gap-1 bg-[#283039] px-2 py-1 rounded text-text-secondary text-xs font-bold border border-border-dark">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                                            Booked until Oct
+                                        </div>
+</div>
+<div class="flex flex-wrap gap-2 mb-3">
+<span class="px-2 py-1 rounded bg-[#283039] text-white text-xs font-medium">Full Remodels</span>
+<span class="px-2 py-1 rounded bg-[#283039] text-white text-xs font-medium">Smart Home Tech</span>
+<span class="px-2 py-1 rounded bg-[#283039] text-white text-xs font-medium">Lifts</span>
+</div>
+<p class="text-text-secondary text-sm leading-relaxed line-clamp-2">
+                                        The most trusted name in senior home modifications. We combine safety with aesthetics to ensure your home remains beautiful and functional.
+                                    </p>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 mt-1">
+<button class="flex-1 flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-blue-600 transition-colors">
+<span class="material-symbols-outlined text-[18px]">call</span>
+                                        Contact Now
+                                    </button>
+<button class="flex-1 flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-[#283039] text-white text-sm font-medium hover:bg-[#323c47] transition-colors border border-[#3b4754]">
+                                        View Profile
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="flex flex-col md:flex-row gap-5 p-5 rounded-xl border border-border-dark bg-surface-dark hover:border-primary/50 transition-colors group">
+<!-- Visual -->
+<div class="w-full md:w-48 h-48 md:h-auto shrink-0 rounded-lg overflow-hidden bg-[#283039] relative">
+<img alt="Construction worker measuring wood" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Construction worker measuring wood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPW5K382H9uv8g4Fba20wPytpAAq8XBWJb91JQettCjZd_qsQeGJ4jw-8IpyK3JQNtuImvIY2gAc4ODGJppx1TQ1kDSrXCNo_MwjpBsRk5i7VbjlwcZ02B1UFvcv9dlxJNDhIkvoABph7hDZQaE4lIyZ4SxFI0ZzaInPK_Oq9JohpZa_PLfXGH047bWIEI5YJkjtlG5LuVmtKTzqyCEopWsIKscyGU7ZbM2ZXbVkohtIgcJJJaEcHEVFsXV4h3QsL4AY2buIr-8uep"/>
+<div class="absolute top-2 left-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-400 text-[14px] fill-1">star</span>
+<span class="text-white text-xs font-bold">4.6</span>
+</div>
+</div>
+<!-- Content -->
+<div class="flex flex-col flex-1 justify-between gap-4">
+<div>
+<div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="text-white text-xl font-bold">Mobility Masters</h3>
+<span class="material-symbols-outlined text-text-secondary text-[20px]" title="Verified">shield</span>
+</div>
+<p class="text-text-secondary text-sm">Evanston &amp; Skokie • 5 Years in Business</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-3">
+<span class="px-2 py-1 rounded bg-[#283039] text-white text-xs font-medium">Vertical Lifts</span>
+<span class="px-2 py-1 rounded bg-[#283039] text-white text-xs font-medium">Ramps</span>
+<span class="px-2 py-1 rounded bg-[#283039] text-white text-xs font-medium">Auto-Openers</span>
+</div>
+<p class="text-text-secondary text-sm leading-relaxed line-clamp-2">
+                                        Focused exclusively on improving mobility within the home. Quick turnaround times for ramp installations and lift repairs.
+                                    </p>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 mt-1">
+<button class="flex-1 flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-blue-600 transition-colors">
+<span class="material-symbols-outlined text-[18px]">call</span>
+                                        Contact Now
+                                    </button>
+<button class="flex-1 flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-[#283039] text-white text-sm font-medium hover:bg-[#323c47] transition-colors border border-[#3b4754]">
+                                        View Profile
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-center pt-6 pb-8">
+<button class="flex items-center justify-center gap-2 rounded-lg h-10 px-6 bg-[#283039] text-white text-sm font-medium hover:bg-[#323c47] transition-colors border border-[#3b4754]">
+                            Load More Matches
+                        </button>
+</div>
+</main>
+</div>
+</div>
+</div>
+</body></html>

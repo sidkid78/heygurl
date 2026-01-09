@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contractor Payments &amp; History</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1A1D23",
+                        "surface-highlight": "#283039",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white font-display overflow-x-hidden antialiased">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Navigation -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e5e7eb] dark:border-b-surface-highlight bg-white dark:bg-[#111418] px-10 py-3">
+<div class="flex items-center gap-4">
+<div class="size-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">AgeWell Pro</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="hidden md:flex items-center gap-9">
+<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Leads</a>
+<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Projects</a>
+<a class="text-primary text-sm font-bold leading-normal" href="#">Financials</a>
+<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Settings</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary hover:bg-blue-600 text-white text-sm font-bold leading-normal tracking-[0.015em] transition-colors">
+<span class="truncate">Profile</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-[#e5e7eb] dark:border-surface-highlight" data-alt="Contractor profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCtDYijty_jGQpkqpxmkiUS_HpFi23cisMo-tr7GePC8U0KcCLsn2G--sp7eAR4XKq1-sJt4xXyMbqs-bsYD88bK83ZVgmxTps6dRx-hiBYzoLwkSwQrvdTwdALdH6f0-tyAP_KP-FGCsikJBhz385qHOkDWiGqQb1J6yVyC7CA_I8GoFvWOTjBeqeRfUS5NqyDyf0Obj722upqPWCjjEBXoYLxiU8WosfFNox7KV23JiMnfVgf84GwuuqfavgSkXhpm9ynXg14ZhTs");'></div>
+</div>
+</div>
+</header>
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-6 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 px-4 pt-4 pb-2">
+<a class="text-[#9dabb9] text-sm font-medium leading-normal hover:text-primary" href="#">Dashboard</a>
+<span class="text-[#9dabb9] text-sm font-medium leading-normal">/</span>
+<span class="text-[#111418] dark:text-white text-sm font-medium leading-normal">Payments &amp; History</span>
+</div>
+<!-- Page Header -->
+<div class="flex flex-wrap justify-between items-end gap-4 p-4">
+<div class="flex min-w-72 flex-col gap-2">
+<h1 class="text-[#111418] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Financials</h1>
+<p class="text-[#637588] dark:text-[#9dabb9] text-base font-normal leading-normal">Manage your earnings, payouts, and view transaction history.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 px-3 py-2 bg-green-500/10 rounded-lg border border-green-500/20">
+<span class="material-symbols-outlined text-green-500 text-sm">check_circle</span>
+<span class="text-green-500 text-xs font-bold uppercase tracking-wide">Stripe Connected</span>
+</div>
+<button class="flex items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#e5e7eb] dark:bg-surface-highlight hover:bg-gray-300 dark:hover:bg-[#343e4b] text-[#111418] dark:text-white text-sm font-bold leading-normal tracking-[0.015em] transition-colors border border-transparent dark:border-[#3e4a59]">
+<span class="material-symbols-outlined mr-2 text-lg">settings</span>
+<span class="truncate">Payout Settings</span>
+</button>
+</div>
+</div>
+<!-- Stats Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-surface-dark border border-[#e5e7eb] dark:border-surface-highlight shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-bold uppercase tracking-wider">Available Balance</p>
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+</div>
+<p class="text-[#111418] dark:text-white tracking-tight text-3xl font-bold leading-tight">$4,250.00</p>
+<div class="flex items-center gap-2 mt-2">
+<button class="text-xs bg-primary text-white px-3 py-1.5 rounded-full font-bold hover:bg-blue-600 transition-colors">Initiate Payout</button>
+<span class="text-[#637588] dark:text-[#9dabb9] text-xs">Auto-payout on Oct 30</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-surface-dark border border-[#e5e7eb] dark:border-surface-highlight shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-bold uppercase tracking-wider">Pending Payouts</p>
+<span class="material-symbols-outlined text-[#9dabb9]">pending</span>
+</div>
+<p class="text-[#111418] dark:text-white tracking-tight text-3xl font-bold leading-tight">$850.00</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="text-[#0bda5b] bg-[#0bda5b]/10 px-2 py-0.5 rounded text-xs font-bold">+5%</span>
+<span class="text-[#637588] dark:text-[#9dabb9] text-xs">vs last week</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-surface-dark border border-[#e5e7eb] dark:border-surface-highlight shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-bold uppercase tracking-wider">Total Earnings (YTD)</p>
+<span class="material-symbols-outlined text-[#9dabb9]">show_chart</span>
+</div>
+<p class="text-[#111418] dark:text-white tracking-tight text-3xl font-bold leading-tight">$62,400.00</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="text-[#0bda5b] bg-[#0bda5b]/10 px-2 py-0.5 rounded text-xs font-bold">+24%</span>
+<span class="text-[#637588] dark:text-[#9dabb9] text-xs">vs last year</span>
+</div>
+</div>
+</div>
+<!-- Chart Section -->
+<div class="flex flex-col lg:flex-row gap-4 px-4 py-2">
+<div class="flex-1 rounded-xl bg-white dark:bg-surface-dark border border-[#e5e7eb] dark:border-surface-highlight p-6 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h3 class="text-[#111418] dark:text-white text-lg font-bold">Earnings Trend</h3>
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm">Income over the last 6 months</p>
+</div>
+<div class="flex gap-2">
+<select class="h-8 rounded-lg border border-[#e5e7eb] dark:border-surface-highlight bg-[#f9fafb] dark:bg-background-dark text-[#111418] dark:text-white text-xs px-2 outline-none focus:border-primary">
+<option>Last 6 Months</option>
+<option>This Year</option>
+</select>
+</div>
+</div>
+<!-- Simplified Chart Visualization -->
+<div class="relative h-[200px] w-full mt-4">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 100 50">
+<!-- Grid lines -->
+<line stroke="#283039" stroke-dasharray="2" stroke-width="0.2" x1="0" x2="100" y1="0" y2="0"></line>
+<line stroke="#283039" stroke-dasharray="2" stroke-width="0.2" x1="0" x2="100" y1="12.5" y2="12.5"></line>
+<line stroke="#283039" stroke-dasharray="2" stroke-width="0.2" x1="0" x2="100" y1="25" y2="25"></line>
+<line stroke="#283039" stroke-dasharray="2" stroke-width="0.2" x1="0" x2="100" y1="37.5" y2="37.5"></line>
+<line stroke="#283039" stroke-dasharray="2" stroke-width="0.2" x1="0" x2="100" y1="50" y2="50"></line>
+<!-- Area Gradient -->
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#137fec" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#137fec" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Chart Line & Area -->
+<path d="M0 40 L20 35 L40 20 L60 25 L80 10 L100 15 V 50 H 0 Z" fill="url(#chartGradient)"></path>
+<path d="M0 40 L20 35 L40 20 L60 25 L80 10 L100 15" fill="none" stroke="#137fec" stroke-linecap="round" stroke-width="0.8" vector-effect="non-scaling-stroke"></path>
+<!-- Points -->
+<circle cx="20" cy="35" fill="#137fec" r="1"></circle>
+<circle cx="40" cy="20" fill="#137fec" r="1"></circle>
+<circle cx="60" cy="25" fill="#137fec" r="1"></circle>
+<circle cx="80" cy="10" fill="#137fec" r="1"></circle>
+<circle cx="100" cy="15" fill="#137fec" r="1"></circle>
+</svg>
+<div class="flex justify-between mt-2 text-[#9dabb9] text-xs font-medium">
+<span>May</span>
+<span>Jun</span>
+<span>Jul</span>
+<span>Aug</span>
+<span>Sep</span>
+<span>Oct</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Transactions Table Section -->
+<div class="p-4">
+<div class="flex flex-col rounded-xl bg-white dark:bg-surface-dark border border-[#e5e7eb] dark:border-surface-highlight shadow-sm overflow-hidden">
+<!-- Table Controls -->
+<div class="flex flex-wrap items-center justify-between gap-4 p-4 border-b border-[#e5e7eb] dark:border-surface-highlight">
+<h3 class="text-[#111418] dark:text-white text-lg font-bold">Recent Transactions</h3>
+<div class="flex gap-3">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2.5 top-2 text-[#9dabb9] text-lg">search</span>
+<input class="h-9 pl-9 pr-4 rounded-lg bg-[#f9fafb] dark:bg-background-dark border border-[#e5e7eb] dark:border-surface-highlight text-[#111418] dark:text-white text-sm outline-none focus:border-primary w-full md:w-64 placeholder-[#9dabb9]" placeholder="Search transactions..." type="text"/>
+</div>
+<button class="flex items-center gap-2 h-9 px-3 rounded-lg border border-[#e5e7eb] dark:border-surface-highlight bg-white dark:bg-surface-highlight hover:bg-gray-50 dark:hover:bg-[#343e4b] text-[#111418] dark:text-white text-sm font-medium transition-colors">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+                                        Filter
+                                    </button>
+<button class="flex items-center gap-2 h-9 px-3 rounded-lg border border-[#e5e7eb] dark:border-surface-highlight bg-white dark:bg-surface-highlight hover:bg-gray-50 dark:hover:bg-[#343e4b] text-[#111418] dark:text-white text-sm font-medium transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+                                        Export
+                                    </button>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#f9fafb] dark:bg-surface-highlight/50">
+<th class="p-4 text-[#637588] dark:text-[#9dabb9] font-medium text-xs uppercase tracking-wider">Date</th>
+<th class="p-4 text-[#637588] dark:text-[#9dabb9] font-medium text-xs uppercase tracking-wider">Customer / Job</th>
+<th class="p-4 text-[#637588] dark:text-[#9dabb9] font-medium text-xs uppercase tracking-wider">Type</th>
+<th class="p-4 text-[#637588] dark:text-[#9dabb9] font-medium text-xs uppercase tracking-wider text-right">Amount</th>
+<th class="p-4 text-[#637588] dark:text-[#9dabb9] font-medium text-xs uppercase tracking-wider">Status</th>
+<th class="p-4 text-[#637588] dark:text-[#9dabb9] font-medium text-xs uppercase tracking-wider text-center">Invoice</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e5e7eb] dark:divide-surface-highlight">
+<!-- Row 1 -->
+<tr class="hover:bg-[#f9fafb] dark:hover:bg-surface-highlight/30 transition-colors">
+<td class="p-4 text-[#111418] dark:text-white text-sm">Oct 24, 2023</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-[#111418] dark:text-white font-bold text-sm">Martha Higgins</span>
+<span class="text-[#637588] dark:text-[#9dabb9] text-xs">Wheelchair Ramp Install</span>
+</div>
+</td>
+<td class="p-4 text-[#637588] dark:text-[#9dabb9] text-sm">Service</td>
+<td class="p-4 text-[#111418] dark:text-white font-bold text-sm text-right tabular-nums">+$1,200.00</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                                    Paid
+                                                </span>
+</td>
+<td class="p-4 text-center">
+<button class="text-[#637588] dark:text-[#9dabb9] hover:text-primary transition-colors" title="Download Invoice">
+<span class="material-symbols-outlined">description</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-[#f9fafb] dark:hover:bg-surface-highlight/30 transition-colors">
+<td class="p-4 text-[#111418] dark:text-white text-sm">Oct 22, 2023</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-[#111418] dark:text-white font-bold text-sm">James Peterson</span>
+<span class="text-[#637588] dark:text-[#9dabb9] text-xs">Bathroom Grab Bars</span>
+</div>
+</td>
+<td class="p-4 text-[#637588] dark:text-[#9dabb9] text-sm">Service</td>
+<td class="p-4 text-[#111418] dark:text-white font-bold text-sm text-right tabular-nums">+$350.00</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                                    Processing
+                                                </span>
+</td>
+<td class="p-4 text-center">
+<button class="text-[#637588] dark:text-[#9dabb9] hover:text-primary transition-colors" title="Download Invoice">
+<span class="material-symbols-outlined">description</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-[#f9fafb] dark:hover:bg-surface-highlight/30 transition-colors">
+<td class="p-4 text-[#111418] dark:text-white text-sm">Oct 18, 2023</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-[#111418] dark:text-white font-bold text-sm">Eleanor Rigby</span>
+<span class="text-[#637588] dark:text-[#9dabb9] text-xs">Stairlift Maintenance</span>
+</div>
+</td>
+<td class="p-4 text-[#637588] dark:text-[#9dabb9] text-sm">Maintenance</td>
+<td class="p-4 text-[#111418] dark:text-white font-bold text-sm text-right tabular-nums">+$150.00</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                                    Paid
+                                                </span>
+</td>
+<td class="p-4 text-center">
+<button class="text-[#637588] dark:text-[#9dabb9] hover:text-primary transition-colors" title="Download Invoice">
+<span class="material-symbols-outlined">description</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-[#f9fafb] dark:hover:bg-surface-highlight/30 transition-colors">
+<td class="p-4 text-[#111418] dark:text-white text-sm">Oct 15, 2023</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-[#111418] dark:text-white font-bold text-sm">Robert Chen</span>
+<span class="text-[#637588] dark:text-[#9dabb9] text-xs">Door Widening Project</span>
+</div>
+</td>
+<td class="p-4 text-[#637588] dark:text-[#9dabb9] text-sm">Renovation</td>
+<td class="p-4 text-[#111418] dark:text-white font-bold text-sm text-right tabular-nums">+$2,400.00</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-rose-100 dark:bg-rose-500/10 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+                                                    Failed
+                                                </span>
+</td>
+<td class="p-4 text-center">
+<button class="text-[#637588] dark:text-[#9dabb9] hover:text-primary transition-colors" title="Download Invoice">
+<span class="material-symbols-outlined">description</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-[#f9fafb] dark:hover:bg-surface-highlight/30 transition-colors">
+<td class="p-4 text-[#111418] dark:text-white text-sm">Oct 12, 2023</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-[#111418] dark:text-white font-bold text-sm">AgeWell Platform</span>
+<span class="text-[#637588] dark:text-[#9dabb9] text-xs">Payout to Bank ****4829</span>
+</div>
+</td>
+<td class="p-4 text-[#637588] dark:text-[#9dabb9] text-sm">Payout</td>
+<td class="p-4 text-[#111418] dark:text-white font-bold text-sm text-right tabular-nums">-$4,200.00</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-700/30 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-600/30">
+<span class="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+                                                    Completed
+                                                </span>
+</td>
+<td class="p-4 text-center">
+<button class="text-[#637588] dark:text-[#9dabb9] hover:text-primary transition-colors" title="Download Statement">
+<span class="material-symbols-outlined">receipt_long</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-between p-4 border-t border-[#e5e7eb] dark:border-surface-highlight bg-[#f9fafb] dark:bg-background-dark">
+<span class="text-sm text-[#637588] dark:text-[#9dabb9]">Showing <span class="font-bold text-[#111418] dark:text-white">1-5</span> of <span class="font-bold text-[#111418] dark:text-white">42</span></span>
+<div class="flex gap-2">
+<button class="p-1 rounded-md hover:bg-white dark:hover:bg-surface-highlight border border-transparent hover:border-[#e5e7eb] dark:hover:border-[#3e4a59] text-[#637588] dark:text-[#9dabb9] disabled:opacity-50 transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-1 rounded-md hover:bg-white dark:hover:bg-surface-highlight border border-transparent hover:border-[#e5e7eb] dark:hover:border-[#3e4a59] text-[#111418] dark:text-white transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Trust Section -->
+<div class="flex justify-center p-8 opacity-60">
+<div class="flex items-center gap-2 text-xs text-[#9dabb9]">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span>Payments processed securely via Stripe Connect</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AR Assessment Walkthrough - AgingInPlace AI</title>
+<!-- Fonts and Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111418", 
+                        "surface-dark": "#1c2127",
+                        "border-dark": "#283039",
+                        "text-secondary": "#9dabb9"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white font-display min-h-screen flex flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e5e7eb] dark:border-border-dark px-6 py-3 lg:px-10 bg-white dark:bg-surface-dark sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]">home_health</span>
+</div>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">AgingInPlace AI</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8 hidden md:flex">
+<nav class="flex items-center gap-9">
+<a class="text-[#111418] dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-[#111418] dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Projects</a>
+<a class="text-[#111418] dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Contractors</a>
+<a class="text-[#111418] dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Profile</a>
+</nav>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-600 transition-colors">
+<span class="truncate">Log Out</span>
+</button>
+</div>
+<button class="md:hidden text-[#111418] dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<main class="flex-1 flex flex-col items-center py-8 px-4 md:px-10 lg:px-20">
+<div class="max-w-[1200px] w-full flex flex-col gap-8">
+<!-- Page Heading & Context -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-[#e5e7eb] dark:border-border-dark pb-6">
+<div class="flex flex-col gap-3 max-w-2xl">
+<div class="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wide">
+<span class="material-symbols-outlined text-lg">ar_on_you</span>
+                        AR Room Assessment
+                    </div>
+<h1 class="text-[#111418] dark:text-white text-3xl md:text-5xl font-black leading-tight tracking-[-0.033em]">
+                        Let's scan your space
+                    </h1>
+<p class="text-[#637588] dark:text-text-secondary text-lg font-normal leading-relaxed">
+                        Follow these simple steps to create an accurate 3D model of your home for your contractor. This helps us suggest the best modifications for you.
+                    </p>
+</div>
+<div class="flex items-center gap-2 bg-yellow-500/10 dark:bg-yellow-500/20 px-4 py-2 rounded-lg border border-yellow-500/20">
+<span class="material-symbols-outlined text-yellow-600 dark:text-yellow-400">lightbulb</span>
+<span class="text-sm font-medium text-yellow-800 dark:text-yellow-200">First time? Watch the tutorial video</span>
+</div>
+</div>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Instructions & Stepper -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Vertical Stepper -->
+<div class="bg-white dark:bg-surface-dark rounded-xl p-6 border border-[#e5e7eb] dark:border-border-dark shadow-sm">
+<h3 class="text-[#111418] dark:text-white font-bold mb-6 text-lg">Process Overview</h3>
+<div class="relative flex flex-col gap-0">
+<!-- Step 1: Active -->
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="size-8 rounded-full bg-primary flex items-center justify-center text-white z-10 shrink-0">
+<span class="material-symbols-outlined text-sm font-bold">phonelink_setup</span>
+</div>
+<div class="w-0.5 h-full bg-primary/30 min-h-[40px]"></div>
+</div>
+<div class="pb-8">
+<h4 class="text-primary font-bold text-base">1. Connect Mobile Device</h4>
+<p class="text-sm text-[#637588] dark:text-text-secondary mt-1">Link your phone to start the camera session.</p>
+</div>
+</div>
+<!-- Step 2: Pending -->
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="size-8 rounded-full bg-[#e5e7eb] dark:bg-border-dark flex items-center justify-center text-[#637588] dark:text-text-secondary z-10 shrink-0 border border-transparent dark:border-[#3b4754]">
+<span class="text-sm font-bold">2</span>
+</div>
+<div class="w-0.5 h-full bg-[#e5e7eb] dark:bg-border-dark min-h-[40px]"></div>
+</div>
+<div class="pb-8 opacity-60">
+<h4 class="text-[#111418] dark:text-white font-semibold text-base">2. Scan Room Perimeter</h4>
+<p class="text-sm text-[#637588] dark:text-text-secondary mt-1">Map the walls and floor boundaries.</p>
+</div>
+</div>
+<!-- Step 3: Pending -->
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="size-8 rounded-full bg-[#e5e7eb] dark:bg-border-dark flex items-center justify-center text-[#637588] dark:text-text-secondary z-10 shrink-0 border border-transparent dark:border-[#3b4754]">
+<span class="text-sm font-bold">3</span>
+</div>
+</div>
+<div class="opacity-60">
+<h4 class="text-[#111418] dark:text-white font-semibold text-base">3. Capture Details</h4>
+<p class="text-sm text-[#637588] dark:text-text-secondary mt-1">Zoom in on specific fixtures.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Helpful Tips Card -->
+<div class="bg-blue-500/5 border border-blue-500/10 rounded-xl p-5">
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined text-primary">tips_and_updates</span>
+<h3 class="font-bold text-[#111418] dark:text-white">Quick Tips for Success</h3>
+</div>
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-500 text-lg mt-0.5">check_circle</span>
+<span class="text-sm text-[#637588] dark:text-text-secondary">Turn on all lights and open curtains for clarity.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-500 text-lg mt-0.5">check_circle</span>
+<span class="text-sm text-[#637588] dark:text-text-secondary">Remove small rugs or obstacles on the floor.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-500 text-lg mt-0.5">check_circle</span>
+<span class="text-sm text-[#637588] dark:text-text-secondary">Move slowly to prevent motion blur.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Center/Right Column: Active Step Interaction -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Interactive Card for Step 1 -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-[#e5e7eb] dark:border-border-dark overflow-hidden shadow-lg flex flex-col h-full">
+<!-- Header -->
+<div class="p-6 border-b border-[#e5e7eb] dark:border-border-dark flex justify-between items-center bg-[#f9fafb] dark:bg-[#161b22]">
+<div>
+<h2 class="text-xl font-bold text-[#111418] dark:text-white">Connect your smartphone</h2>
+<p class="text-sm text-[#637588] dark:text-text-secondary">Step 1 of 3</p>
+</div>
+<div class="bg-green-500/10 text-green-600 dark:text-green-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+<div class="size-2 rounded-full bg-green-500 animate-pulse"></div>
+                                Ready to pair
+                            </div>
+</div>
+<!-- Content Body -->
+<div class="p-8 flex flex-col md:flex-row items-center gap-10 flex-1 justify-center">
+<!-- QR Code Area -->
+<div class="flex flex-col items-center gap-4 text-center">
+<div class="relative group cursor-pointer">
+<div class="bg-white p-4 rounded-xl shadow-inner border border-gray-200">
+<!-- Placeholder for actual QR code logic -->
+<img alt="QR Code to connect mobile device" class="size-48" data-alt="Black and white QR code for mobile scanning" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA-ALspHABK5eI80MyDzEJPAzTXj2w7f1jUVvBbL1fOtNiHEhaOSWN0xK2PYTwqSVzhlLx4gAKty7i5jdSpgrTl6NGlqOzuXR7g7AH_5OjCSNHA7t5ntE5oi1Yae_3p8LHP0TGgGal--IAkaTAtx-iCb1L7nngg4JvYwqm9nGOLw7rQK0cAZTzBM-8RLkcaICi9Jzu3iyPFOHkbgpa-eeDcrKWuDkqpMa7Jf-6u5SYlsXoyEWqSg80wdF_dKDW_kx2Cf6egEl0sUFP"/>
+</div>
+<div class="absolute inset-0 bg-primary/90 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-white font-bold">Click to enlarge</p>
+</div>
+</div>
+<p class="text-sm font-medium text-[#111418] dark:text-white max-w-[200px]">
+                                    Scan with your phone's camera to launch the AR tool
+                                </p>
+</div>
+<!-- Divider -->
+<div class="hidden md:flex h-40 w-[1px] bg-[#e5e7eb] dark:border-border-dark"></div>
+<div class="md:hidden w-full h-[1px] bg-[#e5e7eb] dark:border-border-dark"></div>
+<!-- Instructions -->
+<div class="flex flex-col gap-6 max-w-sm">
+<div class="flex flex-col gap-2">
+<h3 class="text-lg font-bold text-[#111418] dark:text-white">Why use your phone?</h3>
+<p class="text-[#637588] dark:text-text-secondary">
+                                        AR scanning requires movement around the room. Your phone's camera and sensors will measure the space accurately.
+                                    </p>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full flex items-center justify-center gap-2 bg-[#283039] hover:bg-[#3b4754] text-white h-12 rounded-lg font-bold transition-all border border-gray-600">
+<span class="material-symbols-outlined">sms</span>
+                                        Send link via SMS instead
+                                    </button>
+<button class="w-full flex items-center justify-center gap-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 text-primary h-12 rounded-lg font-bold transition-all border border-primary/30">
+<span class="material-symbols-outlined">mail</span>
+                                        Email me the link
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="p-6 bg-[#f9fafb] dark:bg-[#161b22] border-t border-[#e5e7eb] dark:border-border-dark flex justify-between items-center">
+<button class="text-[#637588] dark:text-text-secondary hover:text-[#111418] dark:hover:text-white font-medium text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+                                Back to Dashboard
+                            </button>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="size-2 bg-gray-400 rounded-full"></span>
+<span class="text-xs text-[#637588] dark:text-text-secondary">Waiting for connection...</span>
+</div>
+<button class="bg-primary hover:bg-blue-600 text-white h-12 px-8 rounded-lg font-bold shadow-lg shadow-blue-500/20 transition-all transform hover:-translate-y-0.5 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                                    I've connected my device
+                                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Visual Feature Section (Bottom) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
+<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-[#e5e7eb] dark:border-border-dark flex flex-col gap-4">
+<div class="w-full h-40 bg-gray-100 dark:bg-[#111418] rounded-lg relative overflow-hidden group">
+<!-- Abstract representation of good lighting -->
+<div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-yellow-500 text-5xl opacity-80 group-hover:scale-110 transition-transform duration-300">wb_sunny</span>
+</div>
+<img alt="Brightly lit living room interior" class="absolute inset-0 w-full h-full object-cover opacity-20 dark:opacity-40" data-alt="Brightly lit room interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtCDAlSaTsf5KioFmprRjFC9fvU40qb4-fIDTO-h05NMWJJmAeXyKeOB2O2VN4Z5eInbUtmRVsWDtHkdtWNPONie0RqK7lZTk7CoogNDVpmk99A9AG1AAiW6775NGOeXiM9ci849en5JAZ_MVNDR2YQpUVJ_P8Ts4seG3l-PKK3H5InAe9IGIjBBaR9u9Z0UZXcE74wscMajJvZk7M77LWJN748ctFwdKEuv-smcGeTuHxYwrDfeOBi_JTWpkIjPDjg5S_PanY4qqN"/>
+</div>
+<div>
+<h4 class="font-bold text-[#111418] dark:text-white">Lighting Matters</h4>
+<p class="text-sm text-[#637588] dark:text-text-secondary mt-1">Consistent lighting helps the AI measure distances accurately.</p>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-[#e5e7eb] dark:border-border-dark flex flex-col gap-4">
+<div class="w-full h-40 bg-gray-100 dark:bg-[#111418] rounded-lg relative overflow-hidden group">
+<!-- Abstract representation of clearing floor -->
+<div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-500 text-5xl opacity-80 group-hover:scale-110 transition-transform duration-300">cleaning_services</span>
+</div>
+<img alt="Clean wooden floor space" class="absolute inset-0 w-full h-full object-cover opacity-20 dark:opacity-40" data-alt="Empty clean floor surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxB1O7wXt_JqtY65vdC3dmcvO2zqlylxLA2p3xa0UagxO9NaiO_zv40b9iV2QjsnRA0K33Y49jHAq30k9wQok48R0vroIn31eHP2kU5wHAo3O-KPuxMG39u2prZhjTgS-pylKveX-BCzqr20NiaUrhF2ryK_q8v1VF7ll_Mto7GOC94bL_vwQRJtCBKdbzKWGKZzmkIo4oV_worUJQD-wTUKAlyKCQsydQzPq4arnIzu9h9BRpOIXesnwlbkp_3dSc0-eroLgavKsK"/>
+</div>
+<div>
+<h4 class="font-bold text-[#111418] dark:text-white">Clear the Way</h4>
+<p class="text-sm text-[#637588] dark:text-text-secondary mt-1">Remove clutter so the floor-to-wall edges are visible.</p>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-[#e5e7eb] dark:border-border-dark flex flex-col gap-4">
+<div class="w-full h-40 bg-gray-100 dark:bg-[#111418] rounded-lg relative overflow-hidden group">
+<!-- Abstract representation of steady hands -->
+<div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-purple-500 text-5xl opacity-80 group-hover:scale-110 transition-transform duration-300">center_focus_strong</span>
+</div>
+<img alt="Person holding phone steadily" class="absolute inset-0 w-full h-full object-cover opacity-20 dark:opacity-40" data-alt="Hands holding smartphone steady" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxdd4NucylrYjb-EAuyF9CZF6zjYy2RIbxxq2Lg2a4ZEpOwWaLp8uSwroaOQcR_27vkqPZ7m3suPckRfbUlckyzPugC_E0OKeoMFNqY00EoiACBEtXTrthCnMmZP6aWr8X2RokAZkv5i3O3_X_iKYoATAgqopOVG8sdSMVSenwY0NGtdLRgLOQPVrCBOEcwce-b_KJEtul1HnM8nELD4Y6lWtSCb7hw_-w7pcA3As-YxvbQPCB66FvHWyjSXgjkXlapeqZefjt00I0"/>
+</div>
+<div>
+<h4 class="font-bold text-[#111418] dark:text-white">Steady Pace</h4>
+<p class="text-sm text-[#637588] dark:text-text-secondary mt-1">Move smoothly. Imagine you are painting the room with your camera.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="w-full border-t border-[#e5e7eb] dark:border-border-dark py-8 mt-10 bg-white dark:bg-surface-dark">
+<div class="max-w-[1200px] mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-[#637588] dark:text-text-secondary">© 2024 AgingInPlace AI. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-sm text-[#637588] dark:text-text-secondary hover:text-primary" href="#">Privacy Policy</a>
+<a class="text-sm text-[#637588] dark:text-text-secondary hover:text-primary" href="#">Terms of Service</a>
+<a class="text-sm text-[#637588] dark:text-text-secondary hover:text-primary" href="#">Help Center</a>
+</div>
+</div>
+</footer>
+</body></html>

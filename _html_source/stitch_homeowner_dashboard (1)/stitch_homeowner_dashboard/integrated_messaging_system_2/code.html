@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Integrated Messaging System</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#111418",
+                        "surface-highlight": "#283039",
+                        "text-secondary": "#9dabb9"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for Webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111418; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #283039; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3e4a56; 
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white font-display h-screen overflow-hidden flex selection:bg-primary/30">
+<!-- 1. Left Navigation Sidebar -->
+<nav class="hidden md:flex w-20 lg:w-64 flex-col justify-between bg-surface-dark border-r border-surface-highlight flex-shrink-0 transition-all duration-300">
+<div class="flex flex-col gap-6 p-4">
+<!-- Brand -->
+<div class="flex items-center gap-3 px-2">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 shrink-0 bg-primary/20 flex items-center justify-center text-primary" data-alt="HomeSafe Logo abstract icon">
+<span class="material-symbols-outlined text-[24px]">home_health</span>
+</div>
+<h1 class="text-white text-lg font-bold leading-normal hidden lg:block">HomeSafe</h1>
+</div>
+<!-- Nav Items -->
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-surface-highlight text-white/80 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">grid_view</span>
+<p class="text-sm font-medium leading-normal hidden lg:block">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg bg-surface-highlight text-white shadow-sm ring-1 ring-white/5" href="#">
+<span class="material-symbols-outlined text-[24px] fill-1">chat_bubble</span>
+<p class="text-sm font-medium leading-normal hidden lg:block">Messages</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-surface-highlight text-white/80 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<p class="text-sm font-medium leading-normal hidden lg:block">Profile</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-surface-highlight text-white/80 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<p class="text-sm font-medium leading-normal hidden lg:block">Settings</p>
+</a>
+</div>
+</div>
+<!-- User Profile (Mini) -->
+<div class="p-4 border-t border-surface-highlight">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 shrink-0" data-alt="Profile picture of an elderly homeowner" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCdOnjXqv6duRZTcmZL2ZWiZFhx5LrR1NFtzaii3duxU0T5yHBbntoB_A8zyXvrxU8n49q5c9NbeBKIu4VycHTpFLnpSMCYqzCydjRhefd0fTc0qBSQw61BogrnAQzYewrJhmJ7cLqk7iiJajxGyLZGgbJBldawczxLF0gOwKIOrrHCOX5z1XRBJ2_9QgS1t6UdwM_ii8WQi7HK-wV7QUHSWHnMxcr3lu13pb_zC36X77aPwRC5oyxMpn_C3ghCTz7uLSuD5bIscxQQ");'></div>
+<div class="hidden lg:flex flex-col">
+<p class="text-sm font-bold text-white">Robert Fox</p>
+<p class="text-xs text-text-secondary">Homeowner</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- 2. Conversation List Panel -->
+<aside class="w-full md:w-80 lg:w-96 flex flex-col bg-surface-dark border-r border-surface-highlight flex-shrink-0 z-10">
+<!-- Header -->
+<div class="px-6 pt-6 pb-2">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-white text-2xl font-bold">Messages</h2>
+<button class="text-primary hover:bg-primary/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">edit_square</span>
+</button>
+</div>
+<!-- Search Bar -->
+<label class="flex flex-col w-full h-12 mb-2">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-surface-highlight ring-1 ring-white/5 focus-within:ring-primary/50 transition-all">
+<div class="text-text-secondary flex items-center justify-center pl-4 pr-2">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none bg-transparent text-white focus:outline-none h-full placeholder:text-text-secondary text-base font-normal px-2" placeholder="Search contractors..."/>
+</div>
+</label>
+</div>
+<!-- List -->
+<div class="flex-1 overflow-y-auto px-2 py-2 space-y-1">
+<!-- Active Conversation -->
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-highlight/50 ring-1 ring-primary/30 cursor-pointer relative group">
+<!-- Unread/Active Indicator -->
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-12 bg-primary rounded-r-lg"></div>
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12" data-alt="Portrait of John Doe Contractor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCOevFAEA4qFX6yghzlsru9CEUlVE-BQbnQzRlZfAuyUykkWWcmOfIeoe3N-5SBM118T7F3TNS1Ey6joDG5ElnXcKHVXrJM8k-bbmhLFWjbPUcn5DLjMDm4GuE2py6KhFGuAWfHh2C_5rBAtPiEC-NWfEaA8Io_BZSrkrDv2GKj_epVYSwv8ApvVx-HzLulLmM9TdBzekyVHKzqkfhATxRu5KhdpO4FUQQVXz1Xi4MFjqqeVYySK1eqPgqtdXYHCbsYLCe2Q-gQmGJo");'></div>
+<div class="absolute bottom-0 right-0 size-3 bg-green-500 border-2 border-surface-dark rounded-full"></div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<p class="text-white font-semibold truncate">John Doe</p>
+<span class="text-xs text-text-secondary whitespace-nowrap">2m</span>
+</div>
+<p class="text-text-secondary text-sm truncate">Tuesday works perfectly for the visit.</p>
+</div>
+</div>
+<!-- Other Conversation -->
+<div class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-highlight/30 cursor-pointer transition-colors">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12" data-alt="Portrait of Sarah Smith Contractor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAW7MeDWFq1jSaoW_9Ae1-y6WUPczcodvDwwCzphglywqO3kFxhwVrVAAXb1oVmnEjexTbhiU3ISQVUpqhIG3xxmGuCHpy-A_EV_OYAWHuoYwTTAKTkcfp-z-yMy0YDZevyt0XaIhKsdWNlJv5FkdKFtSEkwl9dz25c9vN4sB4Z-CBd_Dd4PGOEP2qX8hfDLuGCXYojRVVJ9HNDJ4w7CfzO9ycsV8h72Rlz1k9e04PXzhqhWCCFTTEtge9ZyCYhf1kuowEhPv1QiUpw");'></div>
+<div class="absolute bottom-0 right-0 size-3 bg-gray-500 border-2 border-surface-dark rounded-full"></div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<p class="text-white font-medium truncate">Accessibility Pros</p>
+<span class="text-xs text-text-secondary whitespace-nowrap">1d</span>
+</div>
+<p class="text-text-secondary text-sm truncate">Sounds good, let's schedule the assessment.</p>
+</div>
+</div>
+<!-- Other Conversation -->
+<div class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-highlight/30 cursor-pointer transition-colors">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12" data-alt="Portrait of Michael Chen Contractor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDnKNH_Npw2HQvGHPd70iAAJHZc8JX-mD7tGUhwmwCN8oOj6FsGSaR42roFl-EM5wzhGLVXO2ttoOuIgbqdk_VMyfd2xaigda2bBc-7I8ob8aVKDNvgUVaC34NFYAzXwsLs_nJb-ATl-qoQBd4kdgA80K7cnXvC7rzFdU9PoYOfcybbxRcZl6MRBMRMiQIuUxHVSaxisXRBMe8f9BTtFb1iNs3AlvniiapnY9RgwTyJmhL6mzm9jXvRa6NChQDK0qWUUreEjaM1xBQg");'></div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<p class="text-white font-medium truncate">Michael Chen</p>
+<span class="text-xs text-text-secondary whitespace-nowrap">3d</span>
+</div>
+<p class="text-white font-medium text-sm truncate">Quote #4092 attached for review.</p>
+</div>
+<div class="size-2.5 bg-primary rounded-full shrink-0"></div>
+</div>
+<!-- Other Conversation -->
+<div class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-highlight/30 cursor-pointer transition-colors">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12 bg-orange-500 text-white flex items-center justify-center font-bold text-lg" data-alt="Initial avatar for H">H</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<p class="text-white font-medium truncate">Home Modifications Inc.</p>
+<span class="text-xs text-text-secondary whitespace-nowrap">1w</span>
+</div>
+<p class="text-text-secondary text-sm truncate">Thanks for reaching out!</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- 3. Active Chat Window -->
+<main class="flex-1 flex flex-col h-full bg-background-dark relative min-w-0">
+<!-- Chat Header -->
+<header class="h-18 px-6 py-3 flex items-center justify-between border-b border-surface-highlight bg-surface-dark/95 backdrop-blur z-20 sticky top-0">
+<div class="flex items-center gap-4 cursor-pointer hover:opacity-80 transition-opacity">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12" data-alt="Portrait of John Doe Contractor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCvID7VxAJRVI3nYOXzB5olsQSMBWYOiwX8sCBLkycguGGxu4x2PgN85Ot-al1p12oFnwOg_2JKIPf3pue0UILzwZUytjJqTNx4uJZKi5YPG4lZnHohJL6rU24msBjkTC4SIOqF59yH1uffyqQ3RpyXgf9nXpqPkAIF6-R2gTj8_9MFJNeH7ZW70qkd_hx70yNkF8dP9X1HWxIQ-a_RBLbxAkywj2CMO2sv5pzsjNIKCZ-fQW7_dVjQArcfSrvwdMDDxGwFTE0TzpNT");'></div>
+<div class="absolute bottom-0 right-0 size-3 bg-green-500 border-2 border-surface-dark rounded-full"></div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h2 class="text-lg font-bold text-white">John Doe</h2>
+<span class="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-green-400 bg-green-400/10 px-2 py-0.5 rounded-full border border-green-400/20">
+<span class="material-symbols-outlined text-[12px] fill-1">verified</span> Verified
+                        </span>
+</div>
+<p class="text-sm text-text-secondary">SafeStep Renovations</p>
+</div>
+</div>
+<div class="flex items-center gap-2 text-text-secondary">
+<button class="p-2.5 hover:bg-surface-highlight hover:text-white rounded-lg transition-colors" title="Start Voice Call">
+<span class="material-symbols-outlined">call</span>
+</button>
+<button class="p-2.5 hover:bg-surface-highlight hover:text-white rounded-lg transition-colors" title="Start Video Call">
+<span class="material-symbols-outlined">videocam</span>
+</button>
+<div class="h-6 w-px bg-surface-highlight mx-1"></div>
+<button class="p-2.5 hover:bg-surface-highlight hover:text-white rounded-lg transition-colors" title="More Options">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Messages Area -->
+<div class="flex-1 overflow-y-auto p-6 flex flex-col gap-6 scroll-smooth pb-4">
+<!-- Date Divider -->
+<div class="flex justify-center my-2">
+<span class="text-xs font-medium text-text-secondary bg-surface-highlight/50 px-3 py-1 rounded-full">Yesterday</span>
+</div>
+<!-- Message Received -->
+<div class="flex gap-4 max-w-[85%] lg:max-w-[70%]">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 shrink-0 self-end mb-1" data-alt="Portrait of John Doe Contractor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCEwqW-AYFJNSljYZ0OdyyAjhZ95Ubkb8NJvOyS1semMuVO5FjkttV1rAd9uMZmW6g7gDG17hNQG0MqpAKerKFKrNV-WcrI9KtgeQsiHaiWcT9OiA1RK9QdomCJ5IpBN2oC5xVNewhkneQjFsD083P1BaSm-vpoINZZVijX2TCvmVUujp8hcR_tGsyeiPjjma5r3iqvSDMCzTuPmasJZOu4-J2c1JafjlMGvMhBQ7XeMU1b1tdfD8JwC8oPHkSJFr_Luj0uyobyrk-5");'></div>
+<div class="flex flex-col gap-1">
+<div class="bg-surface-highlight rounded-2xl rounded-bl-none px-4 py-3 shadow-sm">
+<p class="text-base text-white/90 leading-relaxed">Hi Robert, I've reviewed the preliminary AR scan you sent over. The bathroom dimensions look promising for a roll-in shower conversion.</p>
+</div>
+<span class="text-xs text-text-secondary ml-1">10:30 AM</span>
+</div>
+</div>
+<!-- Message Sent -->
+<div class="flex gap-4 max-w-[85%] lg:max-w-[70%] self-end flex-row-reverse">
+<div class="flex flex-col gap-1 items-end">
+<div class="bg-primary rounded-2xl rounded-br-none px-4 py-3 shadow-md shadow-primary/10">
+<p class="text-base text-white leading-relaxed">That's great news! I was worried about the plumbing access on the north wall.</p>
+</div>
+</div>
+</div>
+<!-- Message Sent (with Attachment) -->
+<div class="flex gap-4 max-w-[85%] lg:max-w-[70%] self-end flex-row-reverse">
+<div class="flex flex-col gap-1 items-end">
+<div class="bg-primary rounded-2xl rounded-br-none p-1.5 shadow-md shadow-primary/10 flex flex-col gap-2">
+<!-- Image Attachment -->
+<div class="relative group cursor-pointer overflow-hidden rounded-xl">
+<img class="w-64 h-48 object-cover hover:scale-105 transition-transform duration-500" data-alt="Photo of bathroom plumbing wall with exposed pipes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUYgg75xj3nBoi-EW7ELtWMxk36NgkZKiU4JrzsBPGuHq30Wps33fLwc_gWBMgABxSmQit2PD54xF3IYCAQtZlnnWsqXz_RhmoD_xmBy-uV2HDf4g2zMAHbQAXIPmnm-OUxNqfcN-aVXtkN0jCQDFiKzNUfQUhct0znkR71D52Tzc17dkjkSQyVWaPdGF8bOYuPDHWEIYS-Jsd1v1vgXacCZ_2Zsvgw4I6pIe9F9r3C4ifULTwhLdmuK7Sv-NfBvMyiXGtlKQP7WkA"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl">download</span>
+</div>
+</div>
+<p class="text-base text-white leading-relaxed px-2.5 pb-1.5">Here is a closer photo of the plumbing access panel you asked for.</p>
+</div>
+<div class="flex items-center gap-1.5 mr-1">
+<span class="text-xs text-text-secondary">10:42 AM</span>
+<span class="material-symbols-outlined text-[16px] text-primary" title="Read">done_all</span>
+</div>
+</div>
+</div>
+<!-- Date Divider -->
+<div class="flex justify-center my-2">
+<span class="text-xs font-medium text-text-secondary bg-surface-highlight/50 px-3 py-1 rounded-full">Today</span>
+</div>
+<!-- Message Received -->
+<div class="flex gap-4 max-w-[85%] lg:max-w-[70%]">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 shrink-0 self-end mb-1" data-alt="Portrait of John Doe Contractor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDkGKl8nRk1fsOtm1LPSqkL_Fvcs8luQVzI4I45G54vCKGyoUkbXk1rpVz9EbvXTbyOuSLBcbqWkLAgeYeqRxraXfk9jmTQ7BsQtCbZsAUv6Z3vRuD0Xi-ac2nnSviVSWLbVReEUqyUXBROQwkwCdWmIo9KkYKNK9K8bsbHMKIcBFrPQKjW9WOnjC5v1cxZV35v77RTZFIcRAhjkI58Euvz33Opq9zbKcclmGv9n9d40uGeJYmlQKHUYRIbpqB_ObojDztfa_ctq7IX");'></div>
+<div class="flex flex-col gap-1">
+<div class="bg-surface-highlight rounded-2xl rounded-bl-none px-4 py-3 shadow-sm">
+<p class="text-base text-white/90 leading-relaxed">Thanks for the photo, that's exactly what I needed. It confirms we can route the drain without major demolition.</p>
+</div>
+</div>
+</div>
+<!-- Message Received (Consecutive) -->
+<div class="flex gap-4 max-w-[85%] lg:max-w-[70%]">
+<div class="size-10 shrink-0 mb-1"><!-- Spacer for alignment --></div>
+<div class="flex flex-col gap-1">
+<div class="bg-surface-highlight rounded-2xl rounded-bl-none px-4 py-3 shadow-sm">
+<p class="text-base text-white/90 leading-relaxed">Can I come by next Tuesday around 2 PM to do final measurements?</p>
+</div>
+<span class="text-xs text-text-secondary ml-1">9:15 AM</span>
+</div>
+</div>
+<!-- Message Sent (Active) -->
+<div class="flex gap-4 max-w-[85%] lg:max-w-[70%] self-end flex-row-reverse">
+<div class="flex flex-col gap-1 items-end">
+<div class="bg-primary rounded-2xl rounded-br-none px-4 py-3 shadow-md shadow-primary/10">
+<p class="text-base text-white leading-relaxed">Tuesday works perfectly for the visit.</p>
+</div>
+<div class="flex items-center gap-1.5 mr-1">
+<span class="text-xs text-text-secondary">2m ago</span>
+<span class="material-symbols-outlined text-[16px] text-text-secondary" title="Sent">check</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-6 bg-surface-dark border-t border-surface-highlight z-20">
+<div class="max-w-4xl mx-auto w-full relative">
+<!-- Toolbar overlay (for file upload feedback if needed, currently hidden) -->
+<form class="flex items-end gap-3" onsubmit="event.preventDefault()">
+<button class="p-3 text-text-secondary hover:text-white hover:bg-surface-highlight rounded-xl transition-colors flex-shrink-0" title="Attach File" type="button">
+<span class="material-symbols-outlined text-[26px]">attach_file</span>
+</button>
+<div class="flex-1 bg-surface-highlight rounded-2xl flex items-center p-2 ring-1 ring-white/5 focus-within:ring-primary focus-within:ring-1 transition-all">
+<textarea class="w-full bg-transparent border-none text-white placeholder:text-text-secondary focus:ring-0 resize-none py-2 px-3 max-h-32 min-h-[48px]" placeholder="Type a message..." rows="1"></textarea>
+<button class="p-2 text-text-secondary hover:text-white rounded-lg transition-colors mr-1" type="button">
+<span class="material-symbols-outlined text-[24px]">sentiment_satisfied</span>
+</button>
+</div>
+<button class="p-3 bg-primary hover:bg-primary/90 text-white rounded-xl transition-colors shadow-lg shadow-primary/25 flex-shrink-0 flex items-center justify-center aspect-square group" type="submit">
+<span class="material-symbols-outlined text-[24px] group-active:translate-x-1 group-active:-translate-y-1 transition-transform">send</span>
+</button>
+</form>
+<p class="text-xs text-text-secondary mt-2 text-center opacity-60">Press Enter to send, Shift + Enter for new line</p>
+</div>
+</div>
+</main>
+</body></html>

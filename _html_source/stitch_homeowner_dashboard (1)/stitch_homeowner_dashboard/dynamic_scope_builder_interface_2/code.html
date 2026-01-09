@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Administrator Dashboard | HOMEase</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "primary-dark": "#0f65bd",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1b2531",
+                        "surface-lighter": "#283039",
+                        "border-dark": "#2d3748",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Noto Sans", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101922; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3748; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a5568; 
+        }
+        .chart-bar {
+            transition: height 0.5s ease-out;
+        }
+        .chart-bar:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white font-display h-screen flex overflow-hidden">
+<aside class="w-20 lg:w-64 bg-surface-dark border-r border-border-dark flex flex-col flex-none transition-all duration-300 z-30">
+<div class="h-16 flex items-center justify-center lg:justify-start lg:px-6 border-b border-border-dark">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white mr-0 lg:mr-3">
+<span class="material-symbols-outlined">home_app_logo</span>
+</div>
+<span class="text-lg font-bold hidden lg:block tracking-tight">HOMEase <span class="text-primary text-xs align-top">ADMIN</span></span>
+</div>
+<nav class="flex-1 overflow-y-auto py-6 flex flex-col gap-1 px-3">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 text-primary group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="hidden lg:block font-medium text-sm">Dashboard</span>
+</a>
+<div class="px-3 pt-4 pb-2 hidden lg:block">
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">User Management</p>
+</div>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-400 hover:text-white hover:bg-surface-lighter transition-colors" href="#">
+<span class="material-symbols-outlined">engineering</span>
+<span class="hidden lg:block font-medium text-sm">Contractors</span>
+<span class="lg:flex hidden ml-auto bg-amber-500 text-black text-[10px] font-bold px-1.5 rounded-sm">4</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-400 hover:text-white hover:bg-surface-lighter transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="hidden lg:block font-medium text-sm">Homeowners</span>
+</a>
+<div class="px-3 pt-4 pb-2 hidden lg:block">
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Platform Data</p>
+</div>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-400 hover:text-white hover:bg-surface-lighter transition-colors" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="hidden lg:block font-medium text-sm">Analytics &amp; Leads</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-400 hover:text-white hover:bg-surface-lighter transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="hidden lg:block font-medium text-sm">Financials</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-400 hover:text-white hover:bg-surface-lighter transition-colors" href="#">
+<span class="material-symbols-outlined">bug_report</span>
+<span class="hidden lg:block font-medium text-sm">System Logs</span>
+</a>
+</nav>
+<div class="p-4 border-t border-border-dark">
+<button class="flex items-center gap-3 w-full p-2 rounded-lg hover:bg-surface-lighter transition-colors text-left">
+<div class="size-8 rounded-full bg-gradient-to-tr from-purple-500 to-primary flex items-center justify-center text-xs font-bold">
+                    AD
+                </div>
+<div class="hidden lg:block overflow-hidden">
+<p class="text-sm font-bold truncate">Admin User</p>
+<p class="text-xs text-slate-500 truncate">admin@homease.ai</p>
+</div>
+<span class="material-symbols-outlined text-slate-500 ml-auto hidden lg:block text-sm">unfold_more</span>
+</button>
+</div>
+</aside>
+<div class="flex-1 flex flex-col min-w-0 bg-background-dark">
+<header class="h-16 bg-surface-dark/50 backdrop-blur-md border-b border-border-dark flex items-center justify-between px-6 sticky top-0 z-20">
+<h1 class="text-xl font-bold">Platform Overview</h1>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500">
+<span class="material-symbols-outlined text-lg">search</span>
+</span>
+<input class="bg-background-dark border border-border-dark text-white text-sm rounded-lg block w-64 pl-10 p-2 focus:ring-primary focus:border-primary placeholder-slate-500" placeholder="Search users, leads, or IDs..." type="text"/>
+</div>
+<button class="relative p-2 text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 size-2 bg-red-500 rounded-full border-2 border-surface-dark"></span>
+</button>
+<button class="p-2 text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto p-6 scrollbar-hide">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div class="bg-surface-dark rounded-xl p-5 border border-border-dark shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider">Monthly Revenue</p>
+<h3 class="text-2xl font-bold mt-1">$142,300</h3>
+</div>
+<div class="p-2 bg-emerald-500/10 rounded-lg text-emerald-500">
+<span class="material-symbols-outlined">show_chart</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-xs">
+<span class="text-emerald-500 font-bold flex items-center">
+<span class="material-symbols-outlined text-sm">arrow_upward</span> 12.5%
+                        </span>
+<span class="text-slate-500">vs last month</span>
+</div>
+</div>
+<div class="bg-surface-dark rounded-xl p-5 border border-border-dark shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider">Active Leads</p>
+<h3 class="text-2xl font-bold mt-1">1,208</h3>
+</div>
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">view_in_ar</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-xs">
+<span class="text-emerald-500 font-bold flex items-center">
+<span class="material-symbols-outlined text-sm">arrow_upward</span> 8.2%
+                        </span>
+<span class="text-slate-500">new this week</span>
+</div>
+</div>
+<div class="bg-surface-dark rounded-xl p-5 border border-border-dark shadow-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 p-1">
+<span class="flex h-3 w-3 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span>
+</span>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider">Pending Approvals</p>
+<h3 class="text-2xl font-bold mt-1">14</h3>
+</div>
+<div class="p-2 bg-amber-500/10 rounded-lg text-amber-500">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-xs">
+<span class="text-amber-500 font-bold">Action Required</span>
+<span class="text-slate-500">- Contractor Verifications</span>
+</div>
+</div>
+<div class="bg-surface-dark rounded-xl p-5 border border-border-dark shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider">Avg. Conversion Rate</p>
+<h3 class="text-2xl font-bold mt-1">24.8%</h3>
+</div>
+<div class="p-2 bg-purple-500/10 rounded-lg text-purple-500">
+<span class="material-symbols-outlined">donut_large</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-xs">
+<span class="text-red-400 font-bold flex items-center">
+<span class="material-symbols-outlined text-sm">arrow_downward</span> 2.1%
+                        </span>
+<span class="text-slate-500">vs last month</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 flex flex-col gap-8">
+<div class="bg-surface-dark rounded-xl border border-border-dark p-6 shadow-lg">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-lg font-bold text-white">Lead Generation Performance</h3>
+<p class="text-sm text-slate-400">Aging-in-place modification requests over time</p>
+</div>
+<div class="flex items-center bg-surface-lighter rounded-lg p-1">
+<button class="px-3 py-1 text-xs font-medium text-white bg-border-dark rounded shadow-sm">30 Days</button>
+<button class="px-3 py-1 text-xs font-medium text-slate-400 hover:text-white">90 Days</button>
+<button class="px-3 py-1 text-xs font-medium text-slate-400 hover:text-white">1 Year</button>
+</div>
+</div>
+<div class="relative h-64 w-full flex items-end justify-between gap-2 px-2 pt-8 pb-2">
+<div class="absolute inset-0 flex flex-col justify-between text-xs text-slate-600 pointer-events-none pb-8 pr-4">
+<div class="border-b border-dashed border-slate-700 w-full h-0"></div>
+<div class="border-b border-dashed border-slate-700 w-full h-0"></div>
+<div class="border-b border-dashed border-slate-700 w-full h-0"></div>
+<div class="border-b border-dashed border-slate-700 w-full h-0"></div>
+<div class="border-b border-slate-600 w-full h-0"></div>
+</div>
+<div class="w-full bg-surface-lighter rounded-t-sm h-[40%] hover:bg-primary/80 transition-all group relative cursor-pointer">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-lighter text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">40 Leads</div>
+</div>
+<div class="w-full bg-surface-lighter rounded-t-sm h-[55%] hover:bg-primary/80 transition-all group relative cursor-pointer"></div>
+<div class="w-full bg-surface-lighter rounded-t-sm h-[45%] hover:bg-primary/80 transition-all group relative cursor-pointer"></div>
+<div class="w-full bg-primary/40 rounded-t-sm h-[70%] hover:bg-primary/80 transition-all group relative cursor-pointer"></div>
+<div class="w-full bg-primary/50 rounded-t-sm h-[65%] hover:bg-primary/80 transition-all group relative cursor-pointer"></div>
+<div class="w-full bg-primary rounded-t-sm h-[85%] hover:bg-primary-dark transition-all group relative cursor-pointer shadow-[0_0_10px_rgba(19,127,236,0.3)]">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-bold py-1 px-2 rounded">85</div>
+</div>
+<div class="w-full bg-primary/60 rounded-t-sm h-[60%] hover:bg-primary/80 transition-all group relative cursor-pointer"></div>
+<div class="w-full bg-surface-lighter rounded-t-sm h-[50%] hover:bg-primary/80 transition-all group relative cursor-pointer"></div>
+<div class="w-full bg-surface-lighter rounded-t-sm h-[45%] hover:bg-primary/80 transition-all group relative cursor-pointer"></div>
+<div class="w-full bg-surface-lighter rounded-t-sm h-[55%] hover:bg-primary/80 transition-all group relative cursor-pointer"></div>
+</div>
+<div class="flex justify-between text-[10px] text-slate-500 px-2 mt-2 uppercase font-medium">
+<span>Week 1</span>
+<span>Week 2</span>
+<span>Week 3</span>
+<span>Week 4</span>
+</div>
+</div>
+<div class="bg-surface-dark rounded-xl border border-border-dark shadow-lg overflow-hidden">
+<div class="p-6 border-b border-border-dark flex justify-between items-center">
+<div>
+<h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                    Contractor Approval Queue
+                                    <span class="bg-amber-500/20 text-amber-500 text-xs px-2 py-0.5 rounded-full border border-amber-500/20">4 Critical</span>
+</h3>
+</div>
+<button class="text-sm text-primary hover:text-primary-dark font-medium">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left">
+<thead class="text-xs text-slate-500 uppercase bg-surface-lighter/50">
+<tr>
+<th class="px-6 py-3">Contractor</th>
+<th class="px-6 py-3">Credentials</th>
+<th class="px-6 py-3">Status</th>
+<th class="px-6 py-3 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-dark">
+<tr class="hover:bg-surface-lighter/30 transition-colors">
+<td class="px-6 py-4 font-medium text-white">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-700 flex items-center justify-center font-bold text-slate-300">BR</div>
+<div>
+<div class="font-bold">Blue Ridge Remodeling</div>
+<div class="text-xs text-slate-500">Applied 2h ago</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-300">
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded border border-green-800">License Valid</span>
+<span class="px-2 py-1 bg-red-900/30 text-red-400 text-xs rounded border border-red-800">Ins. Expired</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-2 text-amber-500 text-xs font-bold">
+<span class="size-2 rounded-full bg-amber-500"></span>
+                                                Needs Review
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 hover:bg-slate-700 rounded text-slate-400 hover:text-white" title="View Details">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-1.5 hover:bg-green-900/50 rounded text-green-500 hover:text-green-400" title="Approve">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</button>
+<button class="p-1.5 hover:bg-red-900/50 rounded text-red-500 hover:text-red-400" title="Reject">
+<span class="material-symbols-outlined text-lg">cancel</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-lighter/30 transition-colors">
+<td class="px-6 py-4 font-medium text-white">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-700 flex items-center justify-center font-bold text-slate-300">ES</div>
+<div>
+<div class="font-bold">Elite Safety Solutions</div>
+<div class="text-xs text-slate-500">Applied 5h ago</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-300">
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded border border-green-800">License Valid</span>
+<span class="px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded border border-green-800">Ins. Valid</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-2 text-amber-500 text-xs font-bold">
+<span class="size-2 rounded-full bg-amber-500"></span>
+                                                Needs Review
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 hover:bg-slate-700 rounded text-slate-400 hover:text-white">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-1.5 hover:bg-green-900/50 rounded text-green-500 hover:text-green-400">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</button>
+<button class="p-1.5 hover:bg-red-900/50 rounded text-red-500 hover:text-red-400">
+<span class="material-symbols-outlined text-lg">cancel</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-8">
+<div class="bg-surface-dark rounded-xl border border-border-dark shadow-lg p-6">
+<h3 class="text-lg font-bold text-white mb-4">Live Activity Feed</h3>
+<div class="space-y-4">
+<div class="flex gap-3">
+<div class="relative flex-none">
+<div class="size-10 rounded-lg bg-cover bg-center border border-border-dark" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBk5MYzVdV5bspSdEEYjTrKcwZm5OQIBymO-3OOTCXS-xIxEJXMjFIO9giSD3sUiEYGZQDoB-HuAGbSP4OUAK-W93xwiRNGLF0HTh_D83lruFytXIOQiF-IN6Jjb6A_TfuwmyP520B3vZVIl1_Rzk7-1JEzBhn9dnH749AMnbP1oqMmBWI7xBgnS3CeeLkR6iINvA-uGqBsFbPgjzfgRxgwS888B1jAnXQPbyA22298azpQtCbe_0wJMpraJWaBdo3KCOxX1CoNGQ-w");'></div>
+<div class="absolute -bottom-1 -right-1 bg-primary rounded-full p-0.5 border border-surface-dark">
+<span class="material-symbols-outlined text-[10px] text-white">view_in_ar</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-white truncate">New Scan: Johnson Residence</p>
+<p class="text-xs text-slate-500">Lead ID #4092 • 2 min ago</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="relative flex-none">
+<div class="size-10 rounded-lg bg-surface-lighter flex items-center justify-center border border-border-dark text-slate-400">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-white truncate">New Contractor Registration</p>
+<p class="text-xs text-slate-500">Access Remodeling Inc. • 14 min ago</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="relative flex-none">
+<div class="size-10 rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 text-emerald-500">
+<span class="material-symbols-outlined">payments</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-white truncate">Subscription Renewal</p>
+<p class="text-xs text-slate-500">$299.00 • SafeHome Builders • 45 min ago</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-4 py-2 text-xs font-bold text-slate-400 hover:text-white bg-surface-lighter rounded-lg transition-colors">
+                            View Full Log
+                        </button>
+</div>
+<div class="bg-surface-dark rounded-xl border border-border-dark shadow-lg p-6">
+<h3 class="text-lg font-bold text-white mb-4">System Health</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="text-slate-400">AI Processing API</span>
+<span class="text-emerald-500 font-bold">Operational</span>
+</div>
+<div class="h-1.5 bg-surface-lighter rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500 w-[98%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="text-slate-400">Storage Usage (S3)</span>
+<span class="text-amber-500 font-bold">78% Full</span>
+</div>
+<div class="h-1.5 bg-surface-lighter rounded-full overflow-hidden">
+<div class="h-full bg-amber-500 w-[78%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="text-slate-400">Lead Matching Engine</span>
+<span class="text-emerald-500 font-bold">Operational</span>
+</div>
+<div class="h-1.5 bg-surface-lighter rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500 w-full"></div>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-6 border-t border-border-dark">
+<h4 class="text-xs font-bold uppercase text-slate-500 mb-3">Quick Actions</h4>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center p-3 bg-surface-lighter rounded-lg hover:bg-primary hover:text-white transition-colors group">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform">add_business</span>
+<span class="text-[10px] font-bold">Add Contractor</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 bg-surface-lighter rounded-lg hover:bg-primary hover:text-white transition-colors group">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform">article</span>
+<span class="text-[10px] font-bold">Export Report</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

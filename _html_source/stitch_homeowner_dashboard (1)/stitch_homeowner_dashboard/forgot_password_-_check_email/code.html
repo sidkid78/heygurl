@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Check Your Email - Aging-in-Place Connect</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-[#111418] dark:text-white overflow-x-hidden min-h-screen flex flex-col">
+<div class="relative flex min-h-screen w-full flex-col group/design-root">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] dark:border-b-[#283039] px-10 py-3 bg-white dark:bg-[#111418] z-10 relative">
+<div class="flex items-center gap-4 text-[#111418] dark:text-white">
+<div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined text-2xl">home_health</span>
+</div>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Aging-in-Place Connect</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-[#111418] dark:text-white text-sm font-medium hover:text-primary transition-colors hidden sm:block" href="#">Log In</a>
+<a class="text-[#111418] dark:text-white text-sm font-medium hover:text-primary transition-colors hidden sm:block" href="#">Contact Support</a>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex flex-1 justify-center items-center py-5 px-4 sm:px-40 relative">
+<!-- Background decorative elements for AI feel -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none">
+<div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+</div>
+<div class="layout-content-container flex flex-col max-w-[480px] w-full flex-1 z-10">
+<div class="flex flex-col p-6 sm:p-8 bg-white dark:bg-[#1a222d] rounded-xl shadow-lg border border-[#e7edf3] dark:border-[#283039]">
+<div class="flex flex-col items-center gap-6">
+<!-- Hero Icon Area -->
+<div class="relative flex items-center justify-center size-24 rounded-full bg-primary/10">
+<span class="material-symbols-outlined text-[48px] text-primary">mark_email_read</span>
+<div class="absolute -right-1 -top-1 bg-green-500 rounded-full p-1 border-4 border-white dark:border-[#1a222d]">
+<span class="material-symbols-outlined text-sm text-white font-bold">check</span>
+</div>
+</div>
+<!-- Text Content -->
+<div class="flex flex-col items-center gap-3 text-center">
+<h1 class="text-[#111418] dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em]">Check your email</h1>
+<p class="text-[#637588] dark:text-[#9dabb9] text-base font-normal leading-normal">
+                                    We've sent a password reset link to <span class="font-medium text-[#111418] dark:text-white">user@example.com</span>.
+                                </p>
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-normal leading-normal max-w-[90%]">
+                                    Please check your inbox and spam folder. The link will expire in 24 hours.
+                                </p>
+</div>
+<!-- Divider -->
+<div class="w-full h-px bg-[#e7edf3] dark:bg-[#283039]"></div>
+<!-- Actions -->
+<div class="flex flex-col gap-4 w-full">
+<a class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors shadow-md shadow-primary/20" href="#">
+<span class="truncate">Open Email App</span>
+</a>
+<div class="flex flex-col gap-1 items-center">
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-normal text-center">
+                                        Didn't receive the email?
+                                        <button class="text-primary font-medium hover:underline cursor-pointer ml-1">Click to resend</button>
+</p>
+</div>
+<a class="flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 text-[#637588] dark:text-[#9dabb9] hover:text-[#111418] dark:hover:text-white text-sm font-bold leading-normal tracking-[0.015em] transition-colors mt-2" href="#">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+<span class="truncate">Back to Log In</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Meta / Footer links within context -->
+<div class="mt-8 text-center">
+<p class="text-[#637588] dark:text-[#9dabb9] text-xs">
+                            Need help? <a class="underline decoration-primary/50 hover:decoration-primary text-[#637588] dark:text-[#9dabb9] hover:text-primary transition-colors" href="#">Contact our support team</a>
+</p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="flex flex-col gap-6 px-5 py-10 text-center border-t border-[#e7edf3] dark:border-[#283039] bg-white dark:bg-[#111418]">
+<div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
+<a class="text-[#637588] dark:text-[#9dabb9] text-sm font-normal leading-normal hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-[#637588] dark:text-[#9dabb9] text-sm font-normal leading-normal hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-[#637588] dark:text-[#9dabb9] text-sm font-normal leading-normal hover:text-primary transition-colors" href="#">Contact Support</a>
+</div>
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-normal leading-normal">© 2024 Aging-in-Place Connect. All rights reserved.</p>
+</footer>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contractor Onboarding - AgeWell Connect</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1c242d", 
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101922; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #283039; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b4754; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display text-[#111418] dark:text-white transition-colors duration-200">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-[#283039] bg-white dark:bg-[#111418] px-6 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="size-8 flex items-center justify-center rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined">construction</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">AgeWell Connect</h2>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg size-10 hover:bg-gray-100 dark:hover:bg-[#283039] transition-colors">
+<span class="material-symbols-outlined text-gray-500 dark:text-gray-400">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg size-10 hover:bg-gray-100 dark:hover:bg-[#283039] transition-colors">
+<span class="material-symbols-outlined text-gray-500 dark:text-gray-400">help</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-primary/20" data-alt="Professional contractor profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBIASo94pNy_Hi0oZHx2-KR94OwghXBAGL2LW6CY-sTif9OgQf5ABmfISY8KiD9-O-6TwL94NkZ6BwVxToH2GU8SbuKHeCRmqYGUsQ9UInALkWbW1kVa55BGWiMZoNzu2QBKWCppsw_UWKxDe09yzEivUQoFjARBCdQ2fskCiAR6rxjZLv1dGFLn_CpPed-_PrPCM_EN-4gRKnIVUd-gqAA5BeZk16fKYfe8GvB9F9MSVK93bKYAMogfVl-iPqjRABsh8oM_9fTQoxo");'>
+</div>
+</div>
+</header>
+<div class="flex flex-1 w-full max-w-[1440px] mx-auto">
+<!-- Side Navigation (Left Sidebar) -->
+<aside class="hidden lg:flex flex-col w-72 border-r border-gray-200 dark:border-[#283039] bg-white dark:bg-[#111418] p-6 sticky top-[65px] h-[calc(100vh-65px)] overflow-y-auto">
+<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-1">
+<h1 class="text-xl font-bold leading-normal">Onboarding</h1>
+<p class="text-gray-500 dark:text-[#9dabb9] text-sm">Let's get you set up.</p>
+</div>
+<div class="flex flex-col gap-2">
+<!-- Step 1: Active -->
+<div class="group flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 border border-primary/20 cursor-pointer transition-all">
+<div class="flex items-center justify-center size-6 rounded-full bg-primary text-white text-xs font-bold">1</div>
+<p class="text-primary font-bold text-sm">Company Profile</p>
+</div>
+<!-- Step 2: Pending -->
+<div class="group flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-[#1c242d] cursor-pointer transition-all">
+<div class="flex items-center justify-center size-6 rounded-full border border-gray-400 dark:border-[#3b4754] text-gray-400 dark:text-[#9dabb9] text-xs font-bold group-hover:border-primary group-hover:text-primary">2</div>
+<p class="text-gray-600 dark:text-[#9dabb9] text-sm font-medium group-hover:text-primary">Qualifications &amp; CAPS</p>
+</div>
+<!-- Step 3: Pending -->
+<div class="group flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-[#1c242d] cursor-pointer transition-all">
+<div class="flex items-center justify-center size-6 rounded-full border border-gray-400 dark:border-[#3b4754] text-gray-400 dark:text-[#9dabb9] text-xs font-bold group-hover:border-primary group-hover:text-primary">3</div>
+<p class="text-gray-600 dark:text-[#9dabb9] text-sm font-medium group-hover:text-primary">Service Area &amp; Skills</p>
+</div>
+<!-- Step 4: Pending -->
+<div class="group flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-[#1c242d] cursor-pointer transition-all">
+<div class="flex items-center justify-center size-6 rounded-full border border-gray-400 dark:border-[#3b4754] text-gray-400 dark:text-[#9dabb9] text-xs font-bold group-hover:border-primary group-hover:text-primary">4</div>
+<p class="text-gray-600 dark:text-[#9dabb9] text-sm font-medium group-hover:text-primary">Vetting Status</p>
+</div>
+</div>
+<!-- Info Card -->
+<div class="mt-auto p-4 rounded-xl bg-gradient-to-br from-[#1c242d] to-[#111418] border border-[#283039]">
+<div class="flex gap-2 items-start mb-2">
+<span class="material-symbols-outlined text-primary text-lg">tips_and_updates</span>
+<p class="text-sm font-bold text-white">Pro Tip</p>
+</div>
+<p class="text-xs text-[#9dabb9] leading-relaxed">
+                        Contractors with complete profiles and verified CAPS certifications get <span class="text-white font-bold">3x more leads</span> on our platform.
+                    </p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 px-4 md:px-10 py-8 max-w-5xl mx-auto w-full">
+<div class="flex flex-col gap-8">
+<!-- Page Header -->
+<div class="flex flex-col gap-3">
+<h1 class="text-3xl md:text-4xl font-bold leading-tight tracking-tight">Welcome! Let's build your profile.</h1>
+<p class="text-gray-500 dark:text-[#9dabb9] text-lg max-w-2xl">
+                        Complete your setup to unlock high-quality aging-in-place leads. We need a few details to verify your business.
+                    </p>
+</div>
+<!-- Progress Bar -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<p class="text-sm font-medium text-gray-500 dark:text-[#9dabb9]">Profile Completion</p>
+<p class="text-sm font-bold text-primary">25%</p>
+</div>
+<div class="h-2 w-full bg-gray-200 dark:bg-[#283039] rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 25%"></div>
+</div>
+</div>
+<form class="flex flex-col gap-8">
+<!-- Section: Basic Info -->
+<div class="bg-white dark:bg-[#161b22] rounded-xl border border-gray-200 dark:border-[#283039] p-6 shadow-sm">
+<h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">business</span>
+                            Business Details
+                        </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<label class="flex flex-col gap-2">
+<span class="text-sm font-medium text-gray-700 dark:text-gray-300">Company Name</span>
+<input class="w-full rounded-lg bg-gray-50 dark:bg-[#1c2127] border border-gray-300 dark:border-[#3b4754] px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-[#6a7a8c]" placeholder="e.g. SafeHome Renovations LLC" type="text"/>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-sm font-medium text-gray-700 dark:text-gray-300">Business Website</span>
+<input class="w-full rounded-lg bg-gray-50 dark:bg-[#1c2127] border border-gray-300 dark:border-[#3b4754] px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-[#6a7a8c]" placeholder="https://" type="url"/>
+</label>
+<label class="flex flex-col gap-2 md:col-span-2">
+<span class="text-sm font-medium text-gray-700 dark:text-gray-300">Business Address</span>
+<input class="w-full rounded-lg bg-gray-50 dark:bg-[#1c2127] border border-gray-300 dark:border-[#3b4754] px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-[#6a7a8c]" placeholder="Street Address, City, State, ZIP" type="text"/>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-sm font-medium text-gray-700 dark:text-gray-300">Phone Number</span>
+<input class="w-full rounded-lg bg-gray-50 dark:bg-[#1c2127] border border-gray-300 dark:border-[#3b4754] px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-[#6a7a8c]" placeholder="(555) 000-0000" type="tel"/>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-sm font-medium text-gray-700 dark:text-gray-300">Contractor License #</span>
+<input class="w-full rounded-lg bg-gray-50 dark:bg-[#1c2127] border border-gray-300 dark:border-[#3b4754] px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-[#6a7a8c]" placeholder="License Number" type="text"/>
+</label>
+</div>
+</div>
+<!-- Section: Certifications Upload -->
+<div class="bg-white dark:bg-[#161b22] rounded-xl border border-gray-200 dark:border-[#283039] p-6 shadow-sm">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">verified</span>
+                                    Certifications &amp; Insurance
+                                </h3>
+<p class="text-sm text-gray-500 dark:text-[#9dabb9] mt-1">Upload your CAPS certification to get priority ranking.</p>
+</div>
+<div class="hidden sm:flex items-center gap-2 px-3 py-1 bg-green-900/20 text-green-500 rounded-full text-xs font-bold border border-green-900/30">
+<span class="material-symbols-outlined text-sm">lock</span>
+                                Encrypted &amp; Secure
+                            </div>
+</div>
+<div class="border-2 border-dashed border-gray-300 dark:border-[#3b4754] rounded-xl p-8 flex flex-col items-center justify-center text-center hover:bg-gray-50 dark:hover:bg-[#1c2127] transition-colors cursor-pointer group">
+<div class="size-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">cloud_upload</span>
+</div>
+<h4 class="text-lg font-bold mb-1">Drag &amp; Drop or Click to Upload</h4>
+<p class="text-sm text-gray-500 dark:text-[#9dabb9] max-w-sm mx-auto mb-4">
+                                Supports PDF, JPG, PNG. Please upload your General Liability Insurance and CAPS Certificate if applicable.
+                            </p>
+<button class="px-4 py-2 bg-gray-200 dark:bg-[#283039] text-sm font-bold rounded-lg hover:bg-gray-300 dark:hover:bg-[#3b4754] transition-colors" type="button">
+                                Browse Files
+                            </button>
+</div>
+</div>
+<!-- Section: Quick Services -->
+<div class="bg-white dark:bg-[#161b22] rounded-xl border border-gray-200 dark:border-[#283039] p-6 shadow-sm">
+<h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">handyman</span>
+                            Primary Services
+                        </h3>
+<p class="text-sm text-gray-500 dark:text-[#9dabb9] mb-6">Select the services you specialize in.</p>
+<div class="flex flex-wrap gap-3">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="px-4 py-2 rounded-full border border-gray-300 dark:border-[#3b4754] bg-white dark:bg-[#1c2127] text-sm font-medium text-gray-400 dark:text-[#9dabb9] transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary hover:border-primary/50">
+                                    Ramp Installation
+                                </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" type="checkbox"/>
+<div class="px-4 py-2 rounded-full border border-gray-300 dark:border-[#3b4754] bg-white dark:bg-[#1c2127] text-sm font-medium text-gray-400 dark:text-[#9dabb9] transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary hover:border-primary/50">
+                                    Grab Bars &amp; Handrails
+                                </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" type="checkbox"/>
+<div class="px-4 py-2 rounded-full border border-gray-300 dark:border-[#3b4754] bg-white dark:bg-[#1c2127] text-sm font-medium text-gray-400 dark:text-[#9dabb9] transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary hover:border-primary/50">
+                                    Bathroom Remodel
+                                </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" type="checkbox"/>
+<div class="px-4 py-2 rounded-full border border-gray-300 dark:border-[#3b4754] bg-white dark:bg-[#1c2127] text-sm font-medium text-gray-400 dark:text-[#9dabb9] transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary hover:border-primary/50">
+                                    Stair Lifts
+                                </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" type="checkbox"/>
+<div class="px-4 py-2 rounded-full border border-gray-300 dark:border-[#3b4754] bg-white dark:bg-[#1c2127] text-sm font-medium text-gray-400 dark:text-[#9dabb9] transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary hover:border-primary/50">
+                                    Smart Home Tech
+                                </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" type="checkbox"/>
+<div class="px-4 py-2 rounded-full border border-gray-300 dark:border-[#3b4754] bg-white dark:bg-[#1c2127] text-sm font-medium text-gray-400 dark:text-[#9dabb9] transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary hover:border-primary/50">
+                                    Door Widening
+                                </div>
+</label>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="sticky bottom-0 z-10 bg-[#101922]/95 backdrop-blur-sm border-t border-[#283039] p-4 -mx-4 md:-mx-10 md:px-10 flex flex-col-reverse md:flex-row justify-between items-center gap-4 mt-4">
+<button class="w-full md:w-auto px-6 py-3 rounded-lg border border-transparent text-gray-400 font-bold text-sm hover:text-white transition-colors" type="button">
+                            Save &amp; Finish Later
+                        </button>
+<div class="flex w-full md:w-auto gap-4">
+<button class="flex-1 md:flex-none px-6 py-3 rounded-lg border border-[#3b4754] bg-[#1c2127] text-white font-bold text-sm hover:bg-[#283039] transition-colors" type="button">
+                                Back
+                            </button>
+<button class="flex-1 md:flex-none px-8 py-3 rounded-lg bg-primary text-white font-bold text-sm shadow-lg shadow-primary/25 hover:bg-blue-600 transition-colors flex items-center justify-center gap-2" type="submit">
+                                Save &amp; Continue
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</form>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lead Submission Form - AgingInPlace AI</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#137fec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922", // Matches the requested dark theme base
+              "surface-dark": "#1c2127",   // Matches the component card bg
+              "text-secondary": "#9dabb9", // Matches the component secondary text
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {
+                "DEFAULT": "0.25rem", 
+                "lg": "0.5rem", 
+                "xl": "0.75rem", 
+                "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom range slider styling */
+        input[type=range] {
+            -webkit-appearance: none; 
+            background: transparent; 
+        }
+        
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #137fec;
+            cursor: pointer;
+            margin-top: -8px; 
+            box-shadow: 0 0 0 4px rgba(19, 127, 236, 0.2);
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #3b4754;
+            border-radius: 2px;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display min-h-screen flex flex-col overflow-x-hidden">
+<!-- Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#283039] bg-background-dark px-6 py-4 md:px-10">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined !text-[32px]">home_health</span>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">AgingInPlace AI</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-text-secondary hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Dashboard</a>
+<a class="text-text-secondary hover:text-white text-sm font-medium leading-normal transition-colors" href="#">My Reports</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Find Contractors</a>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-[#283039]" data-alt="User profile avatar showing a smiling elderly person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBeS5ROn1cS8ptCW2-shECLdda1qB1HzZ6Gz8K-4jhL-FOhE_BWcsdw2SwCBW2YihfZBUDQ2fInldyFTg9xNgzEifx1tAc5Nryhou8LIXQm52UPSZHl1XdxsLICeXpnzCyE1CkOaPQXfMEGz7HPKQzKR9qTwrzDcd_8urRyooBBssYhnd2_YG0wFxaYe_N3FrLshedAfjN9kveFP2fcnzQxKBLzfP3XDIKp2O8ePXplOAk6tvvvOLPiwb6WD4rHmvfoU1X-jaKnY0Ny");'>
+</div>
+</div>
+<!-- Mobile Menu Icon -->
+<div class="md:hidden text-white">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</header>
+<div class="flex-1 flex justify-center py-8 px-4 md:px-8 lg:px-20">
+<div class="flex flex-col max-w-[1200px] w-full gap-8">
+<!-- Progress Bar & Title Section -->
+<div class="flex flex-col gap-6">
+<!-- Progress Component -->
+<div class="flex flex-col gap-2">
+<div class="flex gap-6 justify-between items-end">
+<h1 class="text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em]">Finalize Your Request</h1>
+<div class="text-right">
+<p class="text-white text-sm font-bold leading-normal">Step 3 of 3</p>
+<p class="text-text-secondary text-xs font-medium">Submission</p>
+</div>
+</div>
+<div class="rounded-full bg-[#3b4754] h-2 mt-2 w-full max-w-full">
+<div class="h-2 rounded-full bg-primary" style="width: 100%;"></div>
+</div>
+</div>
+<p class="text-text-secondary text-base md:text-lg max-w-2xl">
+                    Review the AI-generated modification plan and set your preferences to connect with top-rated local contractors.
+                </p>
+</div>
+<!-- Two Column Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: AI Analysis Summary (Reuse Card & DescriptionList styles) -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<!-- Main Feature Card -->
+<div class="rounded-xl bg-surface-dark shadow-sm border border-[#283039] overflow-hidden">
+<div class="relative w-full h-64 bg-center bg-cover" data-alt="Modern accessible bathroom with walk-in shower and safety rails" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2lyVXqZUSuD6yHchfXh1WCPrdyQZeBGwn8pPbd0F8RuxlhAkJYlPe6V8zKfPp3NINydMCEX9o3K16Sp9Wz5Aco2LltxH41nyElwOfs5k9N4wTEutx5smcmvALMW2lOWHhghJtN-QwWy4kysgKtuH14JlRzJ36GwcmgrnvcB2aka-YQiAj1442bND6MD6XuEcTJwVoT4CalyntpESBZ8aP_tuu206Pswrh8UgxUARS151BevLgMvLpYpdVhsyRshtFTgf4Q8bMhbKC");'>
+<div class="absolute top-4 left-4 bg-primary/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">auto_awesome</span>
+                                AI Analysis Complete
+                            </div>
+</div>
+<div class="p-6">
+<div class="flex flex-col gap-1 mb-6">
+<h3 class="text-white text-xl font-bold">Master Bathroom Modifications</h3>
+<p class="text-text-secondary">Based on your scan from Oct 24, 2023</p>
+</div>
+<!-- Recommendations List (Reusing DescriptionList style) -->
+<div class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-6">
+<div class="flex items-center justify-center size-10 rounded-full bg-[#283039] text-primary">
+<span class="material-symbols-outlined">bathtub</span>
+</div>
+<div class="border-b border-[#283039] pb-4">
+<p class="text-text-secondary text-xs uppercase tracking-wider font-semibold">Accessibility</p>
+<p class="text-white text-base font-medium mt-1">Walk-in Tub Conversion &amp; Zero-entry Shower</p>
+</div>
+<div class="flex items-center justify-center size-10 rounded-full bg-[#283039] text-primary">
+<span class="material-symbols-outlined">grid_on</span>
+</div>
+<div class="border-b border-[#283039] pb-4">
+<p class="text-text-secondary text-xs uppercase tracking-wider font-semibold">Flooring</p>
+<p class="text-white text-base font-medium mt-1">Non-slip Porcelain Tile Installation (R11 Rating)</p>
+</div>
+<div class="flex items-center justify-center size-10 rounded-full bg-[#283039] text-primary">
+<span class="material-symbols-outlined">safety_check</span>
+</div>
+<div class="pb-2">
+<p class="text-text-secondary text-xs uppercase tracking-wider font-semibold">Safety Support</p>
+<p class="text-white text-base font-medium mt-1">Reinforced Grab Bars (3x) &amp; Wall Anchoring</p>
+</div>
+</div>
+<div class="mt-6 pt-6 border-t border-[#283039]">
+<button class="text-primary text-sm font-bold flex items-center gap-2 hover:text-blue-400 transition-colors">
+                                    View Full Technical Report 
+                                    <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Submission Form -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="rounded-xl bg-surface-dark border border-[#283039] p-6 flex flex-col gap-6 shadow-lg">
+<!-- Header -->
+<div>
+<h3 class="text-white text-xl font-bold mb-1">Project Preferences</h3>
+<p class="text-text-secondary text-sm">Define your timeline and budget to match with the right pros.</p>
+</div>
+<!-- Urgency Selector -->
+<div class="flex flex-col gap-3">
+<label class="text-white text-sm font-semibold">Urgency Level</label>
+<div class="grid grid-cols-3 gap-2">
+<!-- Option 1 -->
+<label class="cursor-pointer group relative">
+<input class="peer sr-only" name="urgency" type="radio"/>
+<div class="flex flex-col items-center justify-center p-3 rounded-lg border border-[#3b4754] bg-[#111418] hover:border-primary/50 peer-checked:border-primary peer-checked:bg-primary/10 transition-all h-full">
+<div class="text-text-secondary peer-checked:text-primary mb-1">
+<span class="material-symbols-outlined">calendar_today</span>
+</div>
+<span class="text-white text-xs font-medium text-center">Flexible</span>
+</div>
+</label>
+<!-- Option 2 (Selected) -->
+<label class="cursor-pointer group relative">
+<input checked="" class="peer sr-only" name="urgency" type="radio"/>
+<div class="flex flex-col items-center justify-center p-3 rounded-lg border border-[#3b4754] bg-[#111418] hover:border-primary/50 peer-checked:border-primary peer-checked:bg-primary/10 transition-all h-full">
+<div class="text-text-secondary peer-checked:text-primary mb-1">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<span class="text-white text-xs font-medium text-center">Within 1 Mo</span>
+</div>
+</label>
+<!-- Option 3 -->
+<label class="cursor-pointer group relative">
+<input class="peer sr-only" name="urgency" type="radio"/>
+<div class="flex flex-col items-center justify-center p-3 rounded-lg border border-[#3b4754] bg-[#111418] hover:border-primary/50 peer-checked:border-primary peer-checked:bg-primary/10 transition-all h-full">
+<div class="text-text-secondary peer-checked:text-primary mb-1">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<span class="text-white text-xs font-medium text-center">ASAP</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Budget Slider -->
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<label class="text-white text-sm font-semibold">Estimated Budget</label>
+<span class="text-primary text-sm font-bold bg-primary/10 px-2 py-1 rounded">$5k - $10k</span>
+</div>
+<div class="relative w-full h-6 flex items-center">
+<input class="w-full absolute z-20 opacity-0 cursor-pointer h-full" max="50000" min="1000" step="1000" type="range" value="7500"/>
+<!-- Visual Track -->
+<div class="absolute w-full h-1 bg-[#3b4754] rounded-full z-0 overflow-hidden">
+<div class="h-full bg-primary w-[25%]"></div>
+</div>
+<!-- Thumb Visual -->
+<div class="absolute left-[25%] -translate-x-1/2 w-5 h-5 bg-white border-2 border-primary rounded-full z-10 shadow-md"></div>
+</div>
+<div class="flex justify-between text-text-secondary text-xs">
+<span>$1k</span>
+<span>$50k+</span>
+</div>
+</div>
+<hr class="border-[#283039]"/>
+<!-- Contact Info Review -->
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<label class="text-white text-sm font-semibold">Contact Information</label>
+<button class="text-primary text-xs font-medium hover:underline">Edit</button>
+</div>
+<div class="grid gap-3">
+<div>
+<label class="sr-only">Full Name</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-text-secondary">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2.5 rounded-lg border border-[#3b4754] bg-[#111418] text-white placeholder-text-secondary text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" readonly="" type="text" value="Eleanor Rigby"/>
+</div>
+</div>
+<div>
+<label class="sr-only">Phone</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-text-secondary">
+<span class="material-symbols-outlined text-[18px]">phone</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2.5 rounded-lg border border-[#3b4754] bg-[#111418] text-white placeholder-text-secondary text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" readonly="" type="tel" value="(555) 123-4567"/>
+</div>
+</div>
+<div>
+<label class="sr-only">Address</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-text-secondary">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2.5 rounded-lg border border-[#3b4754] bg-[#111418] text-white placeholder-text-secondary text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" readonly="" type="text" value="123 Penny Lane, Liverpool, UK"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Submit Section -->
+<div class="flex flex-col gap-4 mt-2">
+<label class="flex gap-3 items-start cursor-pointer">
+<div class="relative flex items-start">
+<input checked="" class="peer h-5 w-5 rounded border-[#3b4754] bg-[#111418] text-primary focus:ring-0 focus:ring-offset-0" type="checkbox"/>
+</div>
+<span class="text-text-secondary text-xs leading-normal">
+                                    I confirm these details are accurate and agree to be contacted by up to 3 vetted contractors regarding this project.
+                                </span>
+</label>
+<button class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-primary py-3 px-4 text-white hover:bg-blue-600 transition-colors shadow-lg shadow-blue-900/20">
+<span class="text-base font-bold">Match with Contractors</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<!-- Trust Signals -->
+<div class="flex items-center justify-center gap-6 pt-2">
+<div class="flex items-center gap-1.5 text-text-secondary opacity-70">
+<span class="material-symbols-outlined text-[16px] text-green-500">verified_user</span>
+<span class="text-[10px] font-medium uppercase tracking-wide">HIPAA Compliant</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-secondary opacity-70">
+<span class="material-symbols-outlined text-[16px] text-blue-400">shield</span>
+<span class="text-[10px] font-medium uppercase tracking-wide">Secure Data</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

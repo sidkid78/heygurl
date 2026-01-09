@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SafeHome AI - Homeowner Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "card-dark": "#1a2634", // Custom card color for depth
+                        "card-hover": "#243242",
+                        "text-secondary": "#94a3b8"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white font-display overflow-x-hidden antialiased">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden w-64 flex-col border-r border-[#283039] bg-background-dark lg:flex">
+<div class="flex h-16 items-center px-6 border-b border-[#283039]">
+<div class="flex items-center gap-2 text-white">
+<span class="material-symbols-outlined text-primary" style="font-size: 32px;">home_health</span>
+<h1 class="text-xl font-bold tracking-tight">SafeHome AI</h1>
+</div>
+</div>
+<div class="flex flex-1 flex-col gap-2 overflow-y-auto px-4 py-6">
+<!-- Navigation Items -->
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/20 text-primary group transition-colors" href="#">
+<span class="material-symbols-outlined fill-1">dashboard</span>
+<p class="text-sm font-bold">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-card-hover hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">view_in_ar</span>
+<p class="text-sm font-medium">Assessments</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-card-hover hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<p class="text-sm font-medium">Messages</p>
+<span class="ml-auto flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">2</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-card-hover hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<p class="text-sm font-medium">Documents</p>
+</a>
+<div class="mt-auto pt-4 border-t border-[#283039]">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-card-hover hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium">Settings</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-card-hover hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<p class="text-sm font-medium">Log Out</p>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex flex-1 flex-col h-full overflow-hidden relative">
+<!-- TopNavBar -->
+<header class="flex h-16 items-center justify-between border-b border-[#283039] bg-background-dark px-4 lg:px-8 z-10 shrink-0">
+<div class="flex items-center gap-4 lg:hidden">
+<button class="text-text-secondary hover:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-bold text-white">SafeHome AI</span>
+</div>
+<!-- Search -->
+<div class="hidden max-w-md flex-1 lg:block">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-text-secondary">search</span>
+<input class="h-10 w-full rounded-lg bg-card-dark border-none pl-10 pr-4 text-sm text-white placeholder-text-secondary focus:ring-2 focus:ring-primary" placeholder="Search projects, reports..." type="text"/>
+</div>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-4">
+<button class="relative rounded-full p-2 text-text-secondary hover:bg-card-hover hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute right-2 top-2 h-2 w-2 rounded-full bg-red-500 border border-background-dark"></span>
+</button>
+<div class="h-8 w-px bg-[#283039]"></div>
+<div class="flex items-center gap-3 cursor-pointer">
+<div class="h-9 w-9 rounded-full bg-cover bg-center ring-2 ring-[#283039]" data-alt="Profile picture of an elderly woman smiling" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBD5vgET9tcmodDBclHKsRyZX1wInqDxjsDtOunKo7qH3MZQJMy7AviYV8b48q8yH0qrwhuZzG9UUqCFurNvHi5ztEPp928kzfRuw5qpZ4NnBkYh7pwFqrU_2lJkdtfySfgdwN7puxXLtnLXFL4Bv3QEbRN1kbDu6JxZK5DuzjUGCQ2ObemEphVReHn2gC297dRTBvId9JV0rfVQuXGZmmQaSbQZrx524IYBpgWKOoUWQhlAfDTDYVY1iOmA9Jwg-yrR8KJq2UL-Nuq');"></div>
+<div class="hidden flex-col md:flex">
+<span class="text-sm font-bold text-white leading-none">Eleanor R.</span>
+<span class="text-xs text-text-secondary leading-none mt-1">Homeowner</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Scrollable Content -->
+<main class="flex-1 overflow-y-auto bg-background-dark p-4 lg:p-8">
+<div class="mx-auto max-w-6xl flex flex-col gap-6">
+<!-- Page Heading -->
+<div class="flex flex-col gap-1">
+<h2 class="text-3xl font-bold text-white">Welcome back, Eleanor</h2>
+<p class="text-text-secondary">Here's what's happening with your home modification projects today.</p>
+</div>
+<!-- Active Project Status Card (Hero) -->
+<div class="rounded-xl bg-card-dark border border-[#283039] p-6 shadow-lg">
+<div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-8">
+<!-- Image -->
+<div class="h-32 w-full lg:w-48 shrink-0 rounded-lg bg-cover bg-center" data-alt="Modern bathroom interior with safety rails" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB5ffjmyukkL1O1Sp2AiBEV8WVOHT2NNfY0gEfcDiB-rQk6hFvgIdYg_d_09QiVMbiIztwhn70vpL9kPoXk_8Wocdu_NaDQChHnJyV39T8ZHLFm2jY1rs4HfCqVLqZusNs_JivJU9f2WN2yXVJKOIBnaXnyGE0M7gZKahO8R0cr3nAwLPP-1u6Bf-z_2ULLFoklYxt_6bUK6SX7k-TWvLCkHoahYCA2fnsyYKWTKTsbJ0bO2-Yy5GESEGZh9EJq96mLy8ADaBCZf10B');"></div>
+<!-- Content -->
+<div class="flex flex-1 flex-col gap-4">
+<div class="flex flex-wrap items-start justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-blue-900/40 text-blue-200 border border-blue-800">Active Project</span>
+</div>
+<h3 class="text-xl font-bold text-white">Master Bath Retrofit</h3>
+<p class="text-sm text-text-secondary">Contractor: SafeLiving Construction Inc.</p>
+</div>
+<button class="flex items-center gap-2 text-sm font-bold text-primary hover:text-blue-400 transition-colors">
+                                        View Details <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+<!-- Stepper / Progress -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between text-xs font-semibold uppercase tracking-wide text-text-secondary">
+<span>Current Phase: Contractor Matching</span>
+<span class="text-white">60%</span>
+</div>
+<div class="h-2 w-full rounded-full bg-[#283039]">
+<div class="h-2 rounded-full bg-primary" style="width: 60%;"></div>
+</div>
+<div class="flex justify-between text-xs text-text-secondary mt-1">
+<span>Assessment</span>
+<span>AI Analysis</span>
+<span class="text-primary font-bold">Matching</span>
+<span>Construction</span>
+<span>Complete</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Grid -->
+<div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+<!-- Left Column (Priority & Action) -->
+<div class="flex flex-col gap-6 lg:col-span-2">
+<!-- Quick Actions -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<button class="group flex flex-col items-start gap-3 rounded-xl bg-card-dark border border-[#283039] p-5 hover:bg-card-hover hover:border-primary/50 transition-all text-left">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">view_in_ar</span>
+</div>
+<div>
+<h4 class="font-bold text-white">New AR Assessment</h4>
+<p class="text-xs text-text-secondary mt-1">Scan a new room to identify safety hazards.</p>
+</div>
+</button>
+<button class="group flex flex-col items-start gap-3 rounded-xl bg-card-dark border border-[#283039] p-5 hover:bg-card-hover hover:border-primary/50 transition-all text-left">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-green-500/10 text-green-500 group-hover:bg-green-600 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">calendar_today</span>
+</div>
+<div>
+<h4 class="font-bold text-white">Schedule Consultation</h4>
+<p class="text-xs text-text-secondary mt-1">Book a video call with a certified specialist.</p>
+</div>
+</button>
+</div>
+<!-- AI Insights Widget -->
+<div class="rounded-xl bg-gradient-to-br from-card-dark to-[#18202b] border border-[#283039] p-6">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-purple-500/20 text-purple-400">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+</div>
+<h3 class="font-bold text-white">AI Home Safety Analysis</h3>
+</div>
+<span class="text-xs font-medium text-text-secondary bg-[#283039] px-2 py-1 rounded">Report generated today</span>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between p-3 rounded-lg bg-red-500/10 border border-red-500/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-red-500">warning</span>
+<div>
+<p class="text-sm font-bold text-white">Master Bathroom</p>
+<p class="text-xs text-red-400">High Risk: Slippery surfaces &amp; lack of grab bars</p>
+</div>
+</div>
+<button class="text-xs font-bold text-white bg-red-600 hover:bg-red-500 px-3 py-1.5 rounded transition-colors">View Fixes</button>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-[#283039]/50 border border-[#283039]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-yellow-500">info</span>
+<div>
+<p class="text-sm font-bold text-white">Kitchen</p>
+<p class="text-xs text-text-secondary">Moderate Risk: Cabinet accessibility</p>
+</div>
+</div>
+<button class="text-xs font-bold text-text-secondary hover:text-white transition-colors">Details</button>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-[#283039]/50 border border-[#283039]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-500">check_circle</span>
+<div>
+<p class="text-sm font-bold text-white">Living Room</p>
+<p class="text-xs text-text-secondary">Low Risk: Clear pathways</p>
+</div>
+</div>
+<button class="text-xs font-bold text-text-secondary hover:text-white transition-colors">Details</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (Updates & Connect) -->
+<div class="flex flex-col gap-6">
+<!-- Matched Contractors -->
+<div class="rounded-xl bg-card-dark border border-[#283039] p-5">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-white">Matched Contractors</h3>
+<a class="text-xs text-primary font-bold hover:underline" href="#">View All</a>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Contractor 1 -->
+<div class="flex flex-col gap-3 pb-4 border-b border-[#283039]">
+<div class="flex items-start gap-3">
+<div class="h-10 w-10 rounded-full bg-cover bg-center" data-alt="Portrait of a male contractor" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA-98Ui-1LkSibeaj3ZEZDZMjSr8B3Rpdx4C0hgIs9CoPWkrDHYa1_Twc1iVy2dvqfYeoplJY7NFPY-uzUDDH9GYCxFFvUVRvQGKX2kL0dkTSAgxPNwWHpqcfXBKO3a6hrH210GdMTvcn9SEM2YtSo_5IVfuf8hjJFAj-XLbCMH5_cWbXscWRTU-jLUYZ5PUjcr_li31wuDcrdiSXOa67N9eydoKzX87VL9Gk7J2zW1Ews4-RcmH7xs1aLhSY2BdHRwRYo931_1vJTi');"></div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-white truncate">David Chen</p>
+<p class="text-xs text-text-secondary truncate">Accessibility Pro Cert.</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-yellow-500 text-[14px] fill-1">star</span>
+<span class="text-xs font-bold text-white">4.9</span>
+<span class="text-xs text-text-secondary">(24 jobs)</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 rounded-lg bg-primary py-1.5 text-xs font-bold text-white hover:bg-blue-600 transition-colors">Chat</button>
+<button class="flex-1 rounded-lg bg-[#283039] py-1.5 text-xs font-bold text-white hover:bg-[#323b46] transition-colors">Profile</button>
+</div>
+</div>
+<!-- Contractor 2 -->
+<div class="flex flex-col gap-3">
+<div class="flex items-start gap-3">
+<div class="h-10 w-10 rounded-full bg-cover bg-center" data-alt="Portrait of a female contractor" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDZUbzCW4Jue0QoD56OFOxmlAkBoyUtRf3eq8tpORcV33ZRFNdzY9EGQvNy-HO8BWftlnwZHYyAo5Ao6P_emTaTaJrYzI-UmyLD7H4nW-cW-oewpZrHuMIcWW5grYbymjYqUpSArTTniM8ntep7GeJ95k_RV6WcFQWgEXU8VPzZLcPZ87BLUJ08aDVpu6iTdCc-p5Mn09cJYt_Gp5lnLHCy_vLvJFiQtd7niucigimCZ7Soi5Kw6b3eBFExrOr4JxuuSksR2afn1OGY');"></div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-white truncate">Sarah Jenkins</p>
+<p class="text-xs text-text-secondary truncate">Bath &amp; Home Safety Co.</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-yellow-500 text-[14px] fill-1">star</span>
+<span class="text-xs font-bold text-white">4.8</span>
+<span class="text-xs text-text-secondary">(18 jobs)</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 rounded-lg bg-primary py-1.5 text-xs font-bold text-white hover:bg-blue-600 transition-colors">Chat</button>
+<button class="flex-1 rounded-lg bg-[#283039] py-1.5 text-xs font-bold text-white hover:bg-[#323b46] transition-colors">Profile</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity -->
+<div class="rounded-xl bg-card-dark border border-[#283039] p-5">
+<h3 class="font-bold text-white mb-4">Recent Activity</h3>
+<div class="relative pl-2 space-y-6">
+<!-- Timeline line -->
+<div class="absolute left-[11px] top-2 bottom-2 w-px bg-[#283039]"></div>
+<!-- Item 1 -->
+<div class="relative flex gap-4">
+<div class="relative z-10 mt-1 h-2.5 w-2.5 rounded-full bg-primary border-2 border-card-dark"></div>
+<div>
+<p class="text-sm font-bold text-white">Quote Received</p>
+<p class="text-xs text-text-secondary mt-0.5">David Chen sent a quote for "Grab bar installation".</p>
+<p class="text-[10px] text-text-secondary mt-1">2 hours ago</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="relative flex gap-4">
+<div class="relative z-10 mt-1 h-2.5 w-2.5 rounded-full bg-purple-500 border-2 border-card-dark"></div>
+<div>
+<p class="text-sm font-bold text-white">Report Ready</p>
+<p class="text-xs text-text-secondary mt-0.5">Your Kitchen AR Analysis is ready for review.</p>
+<p class="text-[10px] text-text-secondary mt-1">Yesterday</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="relative flex gap-4">
+<div class="relative z-10 mt-1 h-2.5 w-2.5 rounded-full bg-green-500 border-2 border-card-dark"></div>
+<div>
+<p class="text-sm font-bold text-white">Assessment Complete</p>
+<p class="text-xs text-text-secondary mt-0.5">You completed the "Staircase Safety" checklist.</p>
+<p class="text-[10px] text-text-secondary mt-1">2 days ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

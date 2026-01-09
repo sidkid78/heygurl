@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SafeHome AI - Project Tracking</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "card-dark": "#1a2634", // Custom card color for depth
+                        "card-hover": "#243242",
+                        "text-secondary": "#94a3b8"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white font-display overflow-x-hidden antialiased">
+<div class="flex h-screen w-full overflow-hidden">
+<aside class="hidden w-64 flex-col border-r border-[#283039] bg-background-dark lg:flex">
+<div class="flex h-16 items-center px-6 border-b border-[#283039]">
+<div class="flex items-center gap-2 text-white">
+<span class="material-symbols-outlined text-primary" style="font-size: 32px;">home_health</span>
+<h1 class="text-xl font-bold tracking-tight">SafeHome AI</h1>
+</div>
+</div>
+<div class="flex flex-1 flex-col gap-2 overflow-y-auto px-4 py-6">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-card-hover hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-medium">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/20 text-primary group transition-colors" href="#">
+<span class="material-symbols-outlined fill-1">assignment</span>
+<p class="text-sm font-bold">My Projects</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-card-hover hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">view_in_ar</span>
+<p class="text-sm font-medium">Assessments</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-card-hover hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<p class="text-sm font-medium">Messages</p>
+<span class="ml-auto flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">2</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-card-hover hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<p class="text-sm font-medium">Documents</p>
+</a>
+<div class="mt-auto pt-4 border-t border-[#283039]">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-card-hover hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium">Settings</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-card-hover hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<p class="text-sm font-medium">Log Out</p>
+</a>
+</div>
+</div>
+</aside>
+<div class="flex flex-1 flex-col h-full overflow-hidden relative">
+<header class="flex h-16 items-center justify-between border-b border-[#283039] bg-background-dark px-4 lg:px-8 z-10 shrink-0">
+<div class="flex items-center gap-4 lg:hidden">
+<button class="text-text-secondary hover:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-bold text-white">SafeHome AI</span>
+</div>
+<div class="hidden max-w-md flex-1 lg:block">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-text-secondary">search</span>
+<input class="h-10 w-full rounded-lg bg-card-dark border-none pl-10 pr-4 text-sm text-white placeholder-text-secondary focus:ring-2 focus:ring-primary" placeholder="Search invoices, tasks..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative rounded-full p-2 text-text-secondary hover:bg-card-hover hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute right-2 top-2 h-2 w-2 rounded-full bg-red-500 border border-background-dark"></span>
+</button>
+<div class="h-8 w-px bg-[#283039]"></div>
+<div class="flex items-center gap-3 cursor-pointer">
+<div class="h-9 w-9 rounded-full bg-cover bg-center ring-2 ring-[#283039]" data-alt="Profile picture of an elderly woman smiling" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBD5vgET9tcmodDBclHKsRyZX1wInqDxjsDtOunKo7qH3MZQJMy7AviYV8b48q8yH0qrwhuZzG9UUqCFurNvHi5ztEPp928kzfRuw5qpZ4NnBkYh7pwFqrU_2lJkdtfySfgdwN7puxXLtnLXFL4Bv3QEbRN1kbDu6JxZK5DuzjUGCQ2ObemEphVReHn2gC297dRTBvId9JV0rfVQuXGZmmQaSbQZrx524IYBpgWKOoUWQhlAfDTDYVY1iOmA9Jwg-yrR8KJq2UL-Nuq');"></div>
+<div class="hidden flex-col md:flex">
+<span class="text-sm font-bold text-white leading-none">Eleanor R.</span>
+<span class="text-xs text-text-secondary leading-none mt-1">Homeowner</span>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto bg-background-dark p-4 lg:p-8">
+<div class="mx-auto max-w-6xl flex flex-col gap-6">
+<div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+<div>
+<a class="flex items-center gap-1 text-sm text-text-secondary mb-2 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 16px;">arrow_back</span>
+                            Back to Dashboard
+                        </a>
+<h2 class="text-3xl font-bold text-white">Master Bath Retrofit</h2>
+<div class="flex items-center gap-3 mt-2">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-blue-900/40 text-blue-200 border border-blue-800">Active Project</span>
+<span class="text-xs text-text-secondary">Started Sept 12, 2023 • ID #PRJ-8942</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="hidden md:flex items-center gap-2 px-4 py-2 bg-[#283039] text-white border border-[#283039] rounded-lg text-sm font-bold hover:bg-card-hover transition-colors">
+<span class="material-symbols-outlined text-lg">chat</span> Message Contractor
+                        </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-[#283039] text-white border border-[#283039] rounded-lg text-sm font-bold hover:bg-card-hover transition-colors">
+<span class="material-symbols-outlined text-lg">folder</span> Documents
+                        </button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 flex flex-col gap-6">
+<div class="flex items-center gap-4 rounded-xl bg-card-dark border border-[#283039] p-4 lg:hidden">
+<div class="h-12 w-12 rounded-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA-98Ui-1LkSibeaj3ZEZDZMjSr8B3Rpdx4C0hgIs9CoPWkrDHYa1_Twc1iVy2dvqfYeoplJY7NFPY-uzUDDH9GYCxFFvUVRvQGKX2kL0dkTSAgxPNwWHpqcfXBKO3a6hrH210GdMTvcn9SEM2YtSo_5IVfuf8hjJFAj-XLbCMH5_cWbXscWRTU-jLUYZ5PUjcr_li31wuDcrdiSXOa67N9eydoKzX87VL9Gk7J2zW1Ews4-RcmH7xs1aLhSY2BdHRwRYo931_1vJTi');"></div>
+<div>
+<p class="text-sm font-bold text-white">SafeLiving Construction</p>
+<p class="text-xs text-text-secondary">Lead: David Chen</p>
+</div>
+</div>
+<div class="rounded-xl bg-card-dark border border-[#283039] p-6 lg:p-8">
+<h3 class="text-xl font-bold text-white mb-8">Project Timeline &amp; Tasks</h3>
+<div class="relative space-y-8 pl-2">
+<div class="absolute left-[19px] top-3 bottom-4 w-0.5 bg-[#283039]"></div>
+<div class="relative flex gap-4">
+<div class="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-500 text-white shadow-lg shadow-green-900/20">
+<span class="material-symbols-outlined text-xl">check</span>
+</div>
+<div class="flex-1 pt-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-white">Assessment &amp; Matching</h4>
+<span class="text-xs font-medium text-green-400">Sept 15</span>
+</div>
+<p class="text-sm text-text-secondary mt-1">Initial AR scan completed and contractor assigned.</p>
+</div>
+</div>
+<div class="relative flex gap-4">
+<div class="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-500 text-white shadow-lg shadow-green-900/20">
+<span class="material-symbols-outlined text-xl">check</span>
+</div>
+<div class="flex-1 pt-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-white">Project Scoping &amp; Deposit</h4>
+<span class="text-xs font-medium text-green-400">Sept 20</span>
+</div>
+<p class="text-sm text-text-secondary mt-1">Scope of work defined. Deposit payment verified.</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-[#283039] border border-green-500/30 text-[10px] text-green-400 font-bold uppercase">Paid: $2,000</span>
+</div>
+</div>
+</div>
+<div class="relative flex gap-4">
+<div class="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-white ring-4 ring-primary/20 shadow-lg shadow-blue-900/20">
+<span class="material-symbols-outlined text-xl">construction</span>
+</div>
+<div class="flex-1 pt-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-white">Materials Procurement</h4>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-primary/20 text-primary">In Progress</span>
+</div>
+<p class="text-sm text-text-secondary mt-1 mb-4">Ordering specialized safety equipment and tiles.</p>
+<div class="bg-[#101922] border border-primary/30 rounded-lg p-4 shadow-[0_0_15px_rgba(19,127,236,0.05)]">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-sm">assignment_late</span>
+<h5 class="text-sm font-bold text-white">Action Required</h5>
+</div>
+<div class="flex items-center justify-between gap-4 p-3 rounded bg-card-dark border border-[#283039]">
+<div class="flex items-center gap-3">
+<div class="h-4 w-4 rounded border border-gray-500"></div>
+<span class="text-sm text-white">Approve Tile Selection v2</span>
+</div>
+<button class="px-3 py-1.5 bg-primary text-white text-xs font-bold rounded hover:bg-blue-600 transition-colors">Review</button>
+</div>
+<div class="flex items-center justify-between gap-4 p-3 rounded bg-card-dark border border-[#283039] mt-2 opacity-60">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-500 text-sm">check_box</span>
+<span class="text-sm text-text-secondary line-through">Sign Work Authorization</span>
+</div>
+<span class="text-xs text-text-secondary">Done</span>
+</div>
+</div>
+</div>
+</div>
+<div class="relative flex gap-4 opacity-50">
+<div class="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-card-dark border-2 border-[#283039] text-text-secondary">
+<span class="text-sm font-bold">4</span>
+</div>
+<div class="flex-1 pt-1">
+<h4 class="font-bold text-white">Installation Phase</h4>
+<p class="text-sm text-text-secondary">Scheduled: Oct 28 - Nov 10</p>
+</div>
+</div>
+<div class="relative flex gap-4 opacity-50">
+<div class="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-card-dark border-2 border-[#283039] text-text-secondary">
+<span class="text-sm font-bold">5</span>
+</div>
+<div class="flex-1 pt-1">
+<h4 class="font-bold text-white">Completion &amp; Review</h4>
+<p class="text-sm text-text-secondary">Final walkthrough and project rating.</p>
+<button class="mt-2 text-xs font-bold text-text-secondary flex items-center gap-1 cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-sm">star</span> Leave a Review
+                                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="hidden lg:flex items-center gap-4 rounded-xl bg-card-dark border border-[#283039] p-5">
+<div class="h-12 w-12 rounded-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA-98Ui-1LkSibeaj3ZEZDZMjSr8B3Rpdx4C0hgIs9CoPWkrDHYa1_Twc1iVy2dvqfYeoplJY7NFPY-uzUDDH9GYCxFFvUVRvQGKX2kL0dkTSAgxPNwWHpqcfXBKO3a6hrH210GdMTvcn9SEM2YtSo_5IVfuf8hjJFAj-XLbCMH5_cWbXscWRTU-jLUYZ5PUjcr_li31wuDcrdiSXOa67N9eydoKzX87VL9Gk7J2zW1Ews4-RcmH7xs1aLhSY2BdHRwRYo931_1vJTi');"></div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-white truncate">SafeLiving Construction</p>
+<p class="text-xs text-text-secondary truncate">David Chen • Lead Contractor</p>
+</div>
+<button class="h-8 w-8 flex items-center justify-center rounded-full bg-[#283039] text-text-secondary hover:text-white hover:bg-card-hover transition-colors">
+<span class="material-symbols-outlined text-sm">chat</span>
+</button>
+</div>
+<div class="rounded-xl bg-gradient-to-br from-card-dark to-[#1e2a38] border border-primary/30 p-6 shadow-lg relative overflow-hidden group">
+<div class="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-primary/10 blur-xl group-hover:bg-primary/20 transition-colors"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-4 text-primary">
+<span class="material-symbols-outlined fill-1">payments</span>
+<span class="text-xs font-bold uppercase tracking-wider">Payment Due</span>
+</div>
+<div class="flex items-end gap-1 mb-1">
+<h3 class="text-3xl font-bold text-white">$2,450.00</h3>
+<span class="text-sm text-text-secondary mb-1.5">USD</span>
+</div>
+<p class="text-sm text-text-secondary mb-6">Milestone 2: Material Delivery</p>
+<button class="w-full py-3 bg-primary hover:bg-blue-600 text-white font-bold rounded-lg transition-all shadow-lg shadow-blue-900/20 flex items-center justify-center gap-2 group-hover:translate-y-[-1px]">
+                                    Pay Securely
+                                    <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+<div class="mt-4 pt-4 border-t border-[#283039] flex items-center justify-center gap-2 text-[10px] text-text-secondary uppercase tracking-wide">
+<span class="material-symbols-outlined text-sm">lock</span>
+                                    Secured by Stripe
+                                </div>
+</div>
+</div>
+<div class="rounded-xl bg-card-dark border border-[#283039] p-6">
+<h3 class="font-bold text-white mb-4">Project Financials</h3>
+<div class="space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-text-secondary">Total Budget</span>
+<span class="text-white font-medium">$12,250.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-text-secondary">Paid to Date</span>
+<span class="text-green-400 font-medium">-$2,000.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-text-secondary">Pending</span>
+<span class="text-white font-medium">$10,250.00</span>
+</div>
+<div class="h-px bg-[#283039] my-1"></div>
+<div class="flex justify-between text-sm">
+<span class="text-white font-bold">Remaining Balance</span>
+<span class="text-primary font-bold">$10,250.00</span>
+</div>
+</div>
+</div>
+<div class="rounded-xl bg-card-dark border border-[#283039] p-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-white">Payment History</h3>
+<a class="text-xs font-bold text-primary hover:text-blue-400" href="#">View All</a>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="flex h-8 w-8 items-center justify-center rounded bg-[#283039] text-text-secondary">
+<span class="material-symbols-outlined text-sm">receipt_long</span>
+</div>
+<div>
+<p class="text-sm font-bold text-white">Deposit</p>
+<p class="text-[10px] text-text-secondary">Paid Sept 20</p>
+</div>
+</div>
+<span class="text-sm font-bold text-white">$2,000.00</span>
+</div>
+<div class="flex items-center justify-between opacity-50">
+<div class="flex items-center gap-3">
+<div class="flex h-8 w-8 items-center justify-center rounded bg-[#283039] text-text-secondary">
+<span class="material-symbols-outlined text-sm">receipt_long</span>
+</div>
+<div>
+<p class="text-sm font-bold text-white">Assessment Fee</p>
+<p class="text-[10px] text-text-secondary">Waived</p>
+</div>
+</div>
+<span class="text-sm font-bold text-white">$0.00</span>
+</div>
+</div>
+<button class="mt-4 w-full rounded border border-[#283039] py-2 text-xs font-bold text-text-secondary hover:bg-[#283039] hover:text-white transition-colors">
+                                Download Invoices
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>
